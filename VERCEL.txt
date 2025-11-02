@@ -1,0 +1,11 @@
+Vercel Build Cache Clear
+=========================
+This file was created to trigger a new Vercel build and clear any cached build artifacts.
+
+Git Status:
+- Main branch: 42df42f
+- All conflicts resolved
+- game.html: Clean (144 lines)
+- index.html: Clean
+
+Build should succeed now.
