@@ -25,6 +25,7 @@ class DigitSpanGame {
             gameScreen: null,
             resultScreen: null,
             levelIndicator: null,
+            currentScore: null,
             numberDisplay: null,
             timerFill: null,
             inputArea: null,
@@ -53,6 +54,7 @@ class DigitSpanGame {
         this.dom.gameScreen = document.getElementById('gameScreen');
         this.dom.resultScreen = document.getElementById('resultScreen');
         this.dom.levelIndicator = document.getElementById('levelIndicator');
+        this.dom.currentScore = document.getElementById('currentScore');
         this.dom.numberDisplay = document.getElementById('numberDisplay');
         this.dom.timerFill = document.getElementById('timerFill');
         this.dom.inputArea = document.getElementById('inputArea');
@@ -114,6 +116,9 @@ class DigitSpanGame {
             this.gameActive = true;
 
             this.initProgressBar();
+
+            // Initialize score display
+            this.dom.currentScore.textContent = '0';
 
             this.dom.startScreen.style.display = 'none';
             this.dom.gameScreen.style.display = 'flex';
@@ -299,6 +304,9 @@ class DigitSpanGame {
             levelBox.classList.add('correct');
             this.totalScore += levelScore;
             this.levelResults.push({ level: this.currentLevel, correct: true, score: levelScore });
+
+            // Update real-time score display with animation
+            this.animateScoreUpdate(levelScore);
         } else {
             levelBox.classList.add('incorrect');
             this.levelResults.push({ level: this.currentLevel, correct: false, score: 0 });
@@ -332,6 +340,33 @@ class DigitSpanGame {
     /**
      * Show final result
      */
+    /**
+     * Animate score update for better user feedback
+     */
+    animateScoreUpdate(scoreIncrease) {
+        const scoreElement = this.dom.currentScore;
+        const currentScore = parseInt(scoreElement.textContent);
+        const newScore = currentScore + scoreIncrease;
+
+        // Add flash animation
+        scoreElement.style.transition = 'none';
+        scoreElement.style.transform = 'scale(1.3)';
+        scoreElement.style.color = '#28a745';
+
+        // Trigger reflow
+        scoreElement.offsetHeight;
+
+        // Animate to new value
+        scoreElement.style.transition = 'all 0.5s ease';
+        scoreElement.textContent = newScore;
+
+        // Reset animation after delay
+        setTimeout(() => {
+            scoreElement.style.transform = 'scale(1)';
+            scoreElement.style.color = 'white';
+        }, 500);
+    }
+
     showResult() {
         this.gameActive = false;
 
