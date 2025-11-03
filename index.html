@@ -691,6 +691,62 @@
         .schema-data {
             display: none;
         }
+
+        /* Video Introduction */
+        .video-intro {
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            background: #000;
+        }
+
+        .video-container::before {
+            content: '';
+            display: block;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-description {
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .video-intro {
+                margin: 2rem 0;
+            }
+
+            .video-container {
+                border-radius: 12px;
+                box-shadow: var(--shadow-lg);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-intro {
+                margin: 1.5rem 0;
+            }
+        }
     </style>
 
     <!-- Google tag (gtag.js) -->
@@ -780,6 +836,22 @@
             <p class="section-subtitle">
                 A digit span test is a widely used psychological assessment tool that measures short-term memory and working memory capacity
             </p>
+
+            <!-- Video Introduction -->
+            <div class="video-intro">
+                <div class="video-container">
+                    <iframe
+                        src="https://www.youtube.com/embed/pSVM-7bfR4A"
+                        title="Digit Span Test Explained"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p class="video-description">
+                    Watch this video to learn more about the digit span test and how it works
+                </p>
+            </div>
 
             <div class="info-grid">
                 <div class="info-card">
