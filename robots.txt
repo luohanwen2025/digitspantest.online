@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Allow: /game.html
+
+# Sitemap location
+Sitemap: https://www.digitspantest.online/sitemap.xml
+
+# Additional directives
+Crawl-delay: 1
