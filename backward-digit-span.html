@@ -176,7 +176,7 @@
 
         .game-iframe {
             width: 100%;
-            min-height: 600px;
+            min-height: 800px;
             border: none;
             border-radius: 12px;
             box-shadow: var(--shadow-md);
@@ -313,6 +313,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .game-iframe {
+                min-height: 700px;
+            }
+
             .nav-container {
                 padding: 0 1rem;
             }
@@ -335,6 +339,12 @@
 
             .mobile-menu {
                 display: flex;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .game-iframe {
+                min-height: 650px;
             }
         }
     </style>
