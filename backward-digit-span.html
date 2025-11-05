@@ -10,7 +10,6 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#667eea">
     <link rel="canonical" href="https://digitspantest.online/backward-digit-span.html">
-    <link rel="stylesheet" href="css/game.css">
     <style>
         * {
             margin: 0;
@@ -94,6 +93,22 @@
 
         .nav-links a:hover {
             color: var(--primary-color);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: 0.3s;
         }
 
         /* Hero Section */
@@ -297,6 +312,30 @@
             .info-grid {
                 grid-template-columns: 1fr;
             }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
         }
     </style>
     <!-- Google tag (gtag.js) -->
@@ -320,6 +359,11 @@
                 <li><a href="#scoring">Scoring</a></li>
                 <li><a href="#research">Research</a></li>
             </ul>
+            <button class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
@@ -579,5 +623,25 @@
             <p>&copy; 2025 DigitSpanTest.online. All rights reserved. | <a href="https://digitspantest.online/" style="color: var(--accent-color);">Back to Main Site</a></p>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenu) {
+            mobileMenu.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // Close mobile menu when clicking on a link
+        const navLinkItems = document.querySelectorAll('.nav-links a');
+        navLinkItems.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
