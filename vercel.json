@@ -11,6 +11,14 @@
       "use": "@vercel/static"
     },
     {
+      "src": "backward-digit-span.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "backward-game.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "*.xml",
       "use": "@vercel/static"
     },

@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backward Digit Span Test - Reverse Number Sequence Memory Game | DigitSpanTest.online</title>
+    <meta name="description" content="Take our free backward digit span test online. Reverse the number sequence you see to train working memory and cognitive abilities. Based on clinical neuropsychology assessment tools.">
+    <meta name="keywords" content="backward digit span, reverse digit span, working memory test, cognitive assessment, neuropsychology test, memory training, brain training, psychology test">
+    <meta name="author" content="DigitSpanTest.online">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#667eea">
+    <link rel="canonical" href="https://digitspantest.online/backward-digit-span.html">
+    <link rel="stylesheet" href="css/game.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #667eea;
+            --primary-dark: #764ba2;
+            --secondary-color: #f093fb;
+            --accent-color: #4facfe;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-tertiary: #f3f4f6;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 3rem 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Game Section */
+        .game-section {
+            padding: 3rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .game-container {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+        }
+
+        .game-iframe {
+            width: 100%;
+            min-height: 600px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 3rem 0;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .info-card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .info-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* List Styles */
+        .content-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .content-list li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: var(--bg-tertiary);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .content-list li strong {
+            color: var(--primary-color);
+        }
+
+        /* Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table th {
+            background: var(--gradient-primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-01T4PDG71E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-01T4PDG71E');
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="https://digitspantest.online/" class="logo">🧠 DigitSpanTest.online</a>
+            <ul class="nav-links">
+                <li><a href="https://digitspantest.online/">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#scoring">Scoring</a></li>
+                <li><a href="#research">Research</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Backward Digit Span Test</h1>
+            <p class="hero-subtitle">Test and train your working memory by reversing number sequences. Based on clinical neuropsychology assessment tools.</p>
+            <a href="#play-game" class="hero-button">Start Test Now</a>
+        </div>
+    </section>
+
+    <!-- Play Game Section -->
+    <section id="play-game" class="game-section">
+        <div class="container">
+            <div class="game-container">
+                <h2 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary-color);">Play the Backward Digit Span Test</h2>
+                <iframe src="backward-game.html" class="game-iframe" title="Backward Digit Span Test Game"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Backward Digit Span Test Section -->
+    <section id="about" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What is a Backward Digit Span Test?</h2>
+                <p class="section-subtitle">A neuropsychological assessment tool that measures working memory capacity by requiring you to repeat number sequences in reverse order</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-card-icon">🔄</div>
+                    <h3>Reverse Sequence</h3>
+                    <p>Unlike the standard digit span test, you must recall and enter the digits in reverse order. For example, if you see "3-7-2", you would enter "2-7-3".</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">🧠</div>
+                    <h3>Working Memory</h3>
+                    <p>The backward digit span test specifically assesses the phonological loop and executive attention system in Baddeley's model of working memory.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">🎯</div>
+                    <h3>Clinical Use</h3>
+                    <p>Widely used in neuropsychological assessments to evaluate cognitive impairment, brain injury recovery, and cognitive deficits.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">⚡</div>
+                    <h3>Increased Difficulty</h3>
+                    <p>Reverse recall is significantly more challenging than forward recall, requiring both storage and manipulation of information.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">📊</div>
+                    <h3>Normative Data</h3>
+                    <p>Results are compared to age-adjusted norms. Average backward span is typically 3-4 digits, with healthy adults averaging 4-5 digits.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">🔬</div>
+                    <h3>Research Tool</h3>
+                    <p>Used extensively in cognitive psychology research to study working memory capacity, attention, and executive function.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How Does the Test Work?</h2>
+                <p class="section-subtitle">Understanding the test procedure and what skills it measures</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-card-icon">1️⃣</div>
+                    <h3>Number Display</h3>
+                    <p>A sequence of numbers appears on screen, one at a time, for you to memorize. Each number displays for 1 second.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">2️⃣</div>
+                    <h3>Memorization Phase</h3>
+                    <p>Watch the complete sequence without any interruption. You cannot control the speed - it runs automatically.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">3️⃣</div>
+                    <h3>Reverse Recall</h3>
+                    <p>After the sequence completes, enter the numbers in <strong>reverse order</strong>. If you saw "4-9-2", type "2-9-4".</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">4️⃣</div>
+                    <h3>Progressive Difficulty</h3>
+                    <p>The test starts with 2 digits and increases by 1 digit for each successful level, up to 12 digits maximum.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">5️⃣</div>
+                    <h3>Scoring</h3>
+                    <p>You receive points for each correct answer. Correctly entering 5 digits in reverse gives you 25 points.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">6️⃣</div>
+                    <h3>Results</h3>
+                    <p>After 12 levels, view your total score, working memory capacity estimate, and performance rating.</p>
+                </div>
+            </div>
+
+            <ul class="content-list">
+                <li><strong>Time Limit:</strong> Each number displays for 1 second, with a 1-second pause between numbers. Total time varies by sequence length.</li>
+                <li><strong>Maximum Score:</strong> 510 points total (12 levels maximum)</li>
+                <li><strong>Typical Range:</strong> Most healthy adults score between 150-350 points</li>
+                <li><strong>Test Duration:</strong> Approximately 3-5 minutes depending on your performance</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Scoring Section -->
+    <section id="scoring" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Understanding Your Score</h2>
+                <p class="section-subtitle">What your backward digit span test results mean</p>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Score Range</th>
+                        <th>Performance Level</th>
+                        <th>Backward Span Capacity</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>400-510</td>
+                        <td>Exceptional</td>
+                        <td>7-8 digits</td>
+                        <td>Excellent working memory and cognitive control</td>
+                    </tr>
+                    <tr>
+                        <td>300-399</td>
+                        <td>Above Average</td>
+                        <td>6 digits</td>
+                        <td>Above average working memory capacity</td>
+                    </tr>
+                    <tr>
+                        <td>200-299</td>
+                        <td>Average</td>
+                        <td>5 digits</td>
+                        <td>Normal working memory function</td>
+                    </tr>
+                    <tr>
+                        <td>150-199</td>
+                        <td>Below Average</td>
+                        <td>4 digits</td>
+                        <td>Slightly below average, may improve with practice</td>
+                    </tr>
+                    <tr>
+                        <td>Below 150</td>
+                        <td>Low</td>
+                        <td>3 digits or less</td>
+                        <td>May indicate working memory challenges</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-card-icon">📈</div>
+                    <h3>Interpreting Results</h3>
+                    <p>Your backward span capacity is typically 1-2 digits less than your forward span. A significant drop may indicate executive function challenges.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">🎯</div>
+                    <h3>Improvement</h3>
+                    <p>Regular practice with working memory tasks can improve performance by 10-20% over several weeks of training.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">⚠️</div>
+                    <h3>Limitations</h3>
+                    <p>Single test results are not diagnostic. Consider multiple assessments and consult a neuropsychologist for clinical concerns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Research & Clinical Background</h2>
+                <p class="section-subtitle">Scientific evidence and clinical applications of backward digit span testing</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-card-icon">📚</div>
+                    <h3>Historical Development</h3>
+                    <p>The digit span test was first developed by Jacobs in 1887 and standardized by Wechsler in the early 1900s. The backward span component was added to specifically assess executive function.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">🧬</div>
+                    <h3>Neurobiological Basis</h3>
+                    <p>Backward digit span activates the dorsolateral prefrontal cortex, anterior cingulate cortex, and parietal regions involved in working memory and cognitive control.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">🏥</div>
+                    <h3>Clinical Applications</h3>
+                    <p>Used to assess cognitive function in traumatic brain injury, stroke, dementia, ADHD, and to monitor recovery or treatment effectiveness.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">📊</div>
+                    <h3>Normative Studies</h3>
+                    <p>Large-scale studies (n>5000) provide age-adjusted norms. Performance typically peaks in young adulthood and gradually declines with age.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">🔍</div>
+                    <h3>Validity</h3>
+                    <p>Backward digit span shows strong correlation with general cognitive ability (r=0.6-0.7) and is highly sensitive to frontal lobe dysfunction.</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon">⚖️</div>
+                    <h3>Reliability</h3>
+                    <p>Test-retest reliability ranges from 0.75-0.85, indicating good stability of measurement across time.</p>
+                </div>
+            </div>
+
+            <ul class="content-list">
+                <li><strong>Age Effects:</strong> Backward digit span typically decreases by 0.1-0.2 digits per decade after age 40</li>
+                <li><strong>Education:</strong> Higher education levels correlate with better performance (approximately 0.2 digits per additional year of education)</li>
+                <li><strong>Gender:</strong> Meta-analyses show minimal gender differences in digit span performance</li>
+                <li><strong>Cultural Factors:</strong> Performance may be influenced by language and cultural background, particularly in non-English speakers</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--text-primary); color: white; padding: 2rem 0; text-align: center; margin-top: 3rem;">
+        <div class="container">
+            <p>&copy; 2025 DigitSpanTest.online. All rights reserved. | <a href="https://digitspantest.online/" style="color: var(--accent-color);">Back to Main Site</a></p>
+        </div>
+    </footer>
+</body>
+</html>
