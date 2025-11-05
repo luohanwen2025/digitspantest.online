@@ -11,6 +11,14 @@
       "use": "@vercel/static"
     },
     {
+      "src": "*.xml",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "*.json",
+      "use": "@vercel/static"
+    },
+    {
       "src": "css/**",
       "use": "@vercel/static"
     },
