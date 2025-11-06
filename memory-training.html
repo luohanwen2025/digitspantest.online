@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Training - Improve Working Memory & Cognitive Skills | DigitSpanTest.online</title>
+    <meta name="description" content="Learn effective memory training techniques to improve working memory, focus, and cognitive performance. Science-based exercises and strategies for better mental capacity.">
+    <meta name="keywords" content="memory training, working memory training, brain training, cognitive exercises, memory improvement, mental training, brain exercises, memory techniques, working memory games">
+    <meta name="author" content="DigitSpanTest.online">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#667eea">
+    <link rel="canonical" href="https://digitspantest.online/memory-training.html">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-tertiary: #f3f4f6;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .content-section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .info-card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .info-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .info-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Exercise Cards */
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .exercise-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .exercise-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .exercise-icon {
+            font-size: 2.5rem;
+        }
+
+        .exercise-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .difficulty {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .difficulty-beginner {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .difficulty-intermediate {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .difficulty-advanced {
+            background: #fce7f3;
+            color: #9f1239;
+        }
+
+        .steps {
+            margin: 1.5rem 0;
+        }
+
+        .steps h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .steps ol {
+            padding-left: 1.5rem;
+        }
+
+        .steps li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table th {
+            background: var(--gradient-primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        /* List Styles */
+        .content-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .content-list li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: var(--bg-tertiary);
+            border-left: 4px solid var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .content-list li strong {
+            color: var(--primary-color);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .exercise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-01T4PDG71E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-01T4PDG71E');
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="https://digitspantest.online/" class="logo">🧠 DigitSpanTest.online</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="https://digitspantest.online/">Home</a></li>
+                <li><a href="https://digitspantest.online/game.html">Standard Test</a></li>
+                <li><a href="https://digitspantest.online/backward-digit-span.html">Backward Test</a></li>
+                <li><a href="#exercises">Exercises</a></li>
+                <li><a href="#science">Science</a></li>
+                <li><a href="#tips">Tips</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Memory Training</h1>
+                <p class="hero-subtitle">
+                    Improve your working memory and cognitive performance with science-based training techniques and exercises
+                </p>
+                <div class="hero-cta">
+                    <a href="#exercises" class="btn btn-primary">Start Training</a>
+                    <a href="https://digitspantest.online/game.html" class="btn btn-secondary">Take a Test</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Memory Training Section -->
+    <section id="about" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What is Memory Training?</h2>
+                <p class="section-subtitle">Evidence-based techniques to enhance cognitive function and mental performance</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-card-icon">🧠</span>
+                    <h3>Working Memory</h3>
+                    <p>Training focused on improving your ability to hold and manipulate information in your mind, crucial for learning, problem-solving, and daily tasks.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-card-icon">⚡</span>
+                    <h3>Neuroplasticity</h3>
+                    <p>Your brain's ability to reorganize and form new neural connections. Regular training can literally change your brain structure and function.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-card-icon">📈</span>
+                    <h3>Progressive Improvement</h3>
+                    <p>Start with easier exercises and gradually increase difficulty. Consistent practice leads to measurable improvements in cognitive performance.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-card-icon">🎯</span>
+                    <h3>Transfer Effects</h3>
+                    <p>Training benefits can transfer to other cognitive tasks, helping with attention, processing speed, and overall mental performance.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-card-icon">⏱️</span>
+                    <h3>Time Efficient</h3>
+                    <p>Just 15-30 minutes of daily training can lead to significant improvements in working memory capacity over 4-8 weeks.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-card-icon">🔬</span>
+                    <h3>Scientifically Proven</h3>
+                    <p>Backed by decades of research in cognitive psychology and neuroscience, with measurable outcomes in brain imaging studies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Exercises Section -->
+    <section id="exercises" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Training Exercises</h2>
+                <p class="section-subtitle">Proven exercises to improve your working memory and cognitive function</p>
+            </div>
+
+            <div class="exercise-grid">
+                <div class="exercise-card">
+                    <div class="exercise-header">
+                        <div class="exercise-icon">🔢</div>
+                        <h3 class="exercise-title">Digit Span Training</h3>
+                    </div>
+                    <span class="difficulty difficulty-beginner">Beginner</span>
+                    <p>Practice remembering and repeating sequences of numbers, gradually increasing the length to build working memory capacity.</p>
+                    <div class="steps">
+                        <h4>How to do it:</h4>
+                        <ol>
+                            <li>Start with sequences of 3-4 digits</li>
+                            <li>Read the sequence once, then repeat from memory</li>
+                            <li>Try both forward and reverse order</li>
+                            <li>Increase sequence length as you improve</li>
+                            <li>Practice 10-15 minutes daily</li>
+                        </ol>
+                    </div>
+                    <a href="https://digitspantest.online/game.html" class="btn btn-primary">Try Now</a>
+                </div>
+
+                <div class="exercise-card">
+                    <div class="exercise-header">
+                        <div class="exercise-icon">🗣️</div>
+                        <h3 class="exercise-title">Verbal Fluency</h3>
+                    </div>
+                    <span class="difficulty difficulty-beginner">Beginner</span>
+                    <p>Generate words in specific categories or starting with certain letters to improve verbal working memory and executive function.</p>
+                    <div class="steps">
+                        <h4>How to do it:</h4>
+                        <ol>
+                            <li>Set a timer for 60 seconds</li>
+                            <li>List as many animals as you can</li>
+                            <li>Try different categories: fruits, countries, professions</li>
+                            <li>Alternatively, list words starting with "B"</li>
+                            <li>Aim to beat your previous count</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="exercise-card">
+                    <div class="exercise-header">
+                        <div class="exercise-icon">🎨</div>
+                        <h3 class="exercise-title">Visual Memory</h3>
+                    </div>
+                    <span class="difficulty difficulty-intermediate">Intermediate</span>
+                    <p>Strengthen visual-spatial working memory by remembering and reproducing patterns, sequences, or locations.</p>
+                    <div class="steps">
+                        <h4>How to do it:</h4>
+                        <ol>
+                            <li>Look at a 3x3 grid with some squares filled</li>
+                            <li>Study it for 5 seconds</li>
+                            <li>Reproduce the pattern from memory</li>
+                            <li>Increase grid size as you improve</li>
+                            <li>Try moving patterns in sequence</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="exercise-card">
+                    <div class="exercise-header">
+                        <div class="exercise-icon">🔄</div>
+                        <h3 class="exercise-title">Dual N-Back</h3>
+                    </div>
+                    <span class="difficulty difficulty-advanced">Advanced</span>
+                    <p>Train multiple cognitive processes simultaneously by tracking and responding to changing visual and auditory stimuli.</p>
+                    <div class="steps">
+                        <h4>How to do it:</h4>
+                        <ol>
+                            <li>View a sequence of squares in a grid</li>
+                            <li>Listen to a sequence of letters</li>
+                            <li>Identify when current matches N steps back</li>
+                            <li>Start with 1-back, progress to 2-back, 3-back</li>
+                            <li>Requires concentration and practice</li>
+                        </ol>
+                    </div>
+                    <a href="https://digitspantest.online/backward-digit-span.html" class="btn btn-primary">Try a Related Test</a>
+                </div>
+
+                <div class="exercise-card">
+                    <div class="exercise-header">
+                        <div class="exercise-icon">📝</div>
+                        <h3 class="exercise-title">Mental Arithmetic</h3>
+                    </div>
+                    <span class="difficulty difficulty-intermediate">Intermediate</span>
+                    <p>Perform calculations in your head without writing them down, training both working memory and cognitive flexibility.</p>
+                    <div class="steps">
+                        <h4>How to do it:</h4>
+                        <ol>
+                            <li>Start with simple additions: 23 + 18</li>
+                            <li>Progress to multi-step problems</li>
+                            <li>Try mental math while walking or exercising</li>
+                            <li>Challenge yourself with larger numbers</li>
+                            <li>Combine operations: (15 × 2) + 30</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="exercise-card">
+                    <div class="exercise-header">
+                        <div class="exercise-icon">🗺️</div>
+                        <h3 class="exercise-title">Spatial Memory</h3>
+                    </div>
+                    <span class="difficulty difficulty-intermediate">Intermediate</span>
+                    <p>Improve spatial working memory by navigating mental maps, remembering locations, and tracking moving objects.</p>
+                    <div class="steps">
+                        <h4>How to do it:</h4>
+                        <ol>
+                            <li>Close your eyes and imagine your home</li>
+                            <li>Mentally "walk" from room to room</li>
+                            <li>Remember and list objects in each room</li>
+                            <li>Practice navigating without looking</li>
+                            <li>Increase complexity with unfamiliar places</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Science Section -->
+    <section id="science" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The Science Behind Memory Training</h2>
+                <p class="section-subtitle">Understanding how and why memory training works</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-card-icon">🧬</span>
+                    <h3>Neuroplasticity</h3>
+                    <p>Brain imaging studies show that 8 weeks of working memory training increases gray matter density in the prefrontal cortex and parietal regions.</p>
+                    <ul>
+                        <li>Enhanced neural connectivity</li>
+                        <li>Increased brain activity in training areas</li>
+                        <li>Long-lasting structural changes</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-card-icon">📊</span>
+                    <h3>Research Findings</h3>
+                    <p>Meta-analyses of 30+ studies show medium to large effects (d = 0.65) for working memory training on untrained cognitive tasks.</p>
+                    <ul>
+                        <li>Significant improvements in 4-6 weeks</li>
+                        <li>Benefits last at least 6 months</li>
+                        <li>Transfer to fluid intelligence tasks</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-card-icon">🎯</span>
+                    <h3>Training Specificity</h3>
+                    <p>Training improves both the specific skill practiced and related cognitive functions, known as near and far transfer effects.</p>
+                    <ul>
+                        <li>Near transfer: similar tasks improve</li>
+                        <li>Far transfer: different tasks improve</li>
+                        <li>Attention and processing speed boost</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-card-icon">⏰</span>
+                    <h3>Optimal Duration</h3>
+                    <p>Research suggests 15-30 minutes of daily training for 4-8 weeks produces optimal results without cognitive fatigue.</p>
+                    <ul>
+                        <li>Shorter sessions: better retention</li>
+                        <li>Consistency: more important than duration</li>
+                        <li>Progressive difficulty: key factor</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-card-icon">👥</span>
+                    <h3>Individual Differences</h3>
+                    <p>People with lower initial working memory often show greater improvements (larger effect sizes), but all individuals can benefit.</p>
+                    <ul>
+                        <li>Age: younger adults improve faster</li>
+                        <li>Baseline: lower scores = more gain</li>
+                        <li>Motivation: critical for success</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-card-icon">🔁</span>
+                    <h3>Maintenance</h3>
+                    <p>To maintain gains, practice 2-3 times per week at reduced intensity. Occasional "booster sessions" help preserve improvements.</p>
+                    <ul>
+                        <li>Reduce frequency, not stop entirely</li>
+                        <li>Mix different training exercises</li>
+                        <li>Use trained skills in daily life</li>
+                    </ul>
+                </div>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Training Duration</th>
+                        <th>Expected Improvement</th>
+                        <th>Training Days/Week</th>
+                        <th>Session Length</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2 weeks</td>
+                        <td>Small improvements (d = 0.3)</td>
+                        <td>5-7 days</td>
+                        <td>20-30 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>4 weeks</td>
+                        <td>Noticeable gains (d = 0.5)</td>
+                        <td>5-7 days</td>
+                        <td>15-30 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>6-8 weeks</td>
+                        <td>Significant improvement (d = 0.7)</td>
+                        <td>4-6 days</td>
+                        <td>15-25 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>3+ months</td>
+                        <td>Substantial gains (d = 0.9)</td>
+                        <td>3-5 days</td>
+                        <td>15-20 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>Maintenance</td>
+                        <td>Preserve gains</td>
+                        <td>2-3 days</td>
+                        <td>10-15 minutes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section id="tips" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Training Tips & Best Practices</h2>
+                <p class="section-subtitle">Maximize your training effectiveness with these evidence-based strategies</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="info-card-icon">📅</span>
+                    <h3>Consistency</h3>
+                    <p>Regular daily practice is more effective than sporadic intensive sessions. Aim for 15-30 minutes every day.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-card-icon">📈</span>
+                    <h3>Progressive Difficulty</h3>
+                    <p>Start easy and gradually increase challenge. If success rate is above 90%, move to the next level.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-card-icon">🎯</span>
+                    <h3>Focus</h3>
+                    <p>Eliminate distractions during training. Turn off notifications and find a quiet space for maximum effectiveness.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-card-icon">📊</span>
+                    <h3>Track Progress</h3>
+                    <p>Keep a training log or use our tests to monitor improvements. Visual feedback motivates continued practice.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-card-icon">🔄</span>
+                    <h3>Variety</h3>
+                    <p>Mix different exercises to engage multiple cognitive systems and prevent boredom. Alternate between tasks.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="info-card-icon">😴</span>
+                    <h3>Rest & Recovery</h3>
+                    <p>Take rest days to allow your brain to consolidate learning. Quality sleep is essential for memory formation.</p>
+                </div>
+            </div>
+
+            <ul class="content-list">
+                <li><strong>Stay Hydrated:</strong> Even mild dehydration can impair cognitive performance. Drink water before and during training.</li>
+                <li><strong>No Multitasking:</strong> Training requires full attention. Avoid watching TV, listening to music, or doing other tasks simultaneously.</li>
+                <li><strong>Positive Mindset:</strong> Believe in your ability to improve. Growth mindset significantly enhances training outcomes.</li>
+                <li><strong>Real-World Application:</strong> Use your improved working memory in daily tasks: mental math, remembering lists, following directions.</li>
+                <li><strong>Regular Testing:</strong> Take our digit span tests every 2 weeks to measure progress and adjust training intensity.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="cta-section">
+                <h2>Ready to Start Training?</h2>
+                <p>Test your current working memory and begin your improvement journey today</p>
+                <div class="hero-cta">
+                    <a href="https://digitspantest.online/game.html" class="btn btn-primary" style="background: white; color: var(--primary-color);">Take Standard Test</a>
+                    <a href="https://digitspantest.online/backward-digit-span.html" class="btn btn-secondary" style="border-color: white; color: white;">Try Backward Test</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--text-primary); color: white; padding: 3rem 0; margin-top: 4rem;">
+        <div class="container">
+            <div style="text-align: center;">
+                <div class="logo" style="background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">🧠 DigitSpanTest.online</div>
+                <p style="color: var(--text-light); margin-bottom: 1rem;">Free online memory training and cognitive assessment tools</p>
+                <p style="color: var(--text-light); font-size: 0.9rem;">&copy; 2025 DigitSpanTest.online. All rights reserved.</p>
+                <p style="margin-top: 1rem;">
+                    <a href="https://digitspantest.online/" style="color: var(--accent-color); margin: 0 1rem;">Home</a>
+                    <a href="https://digitspantest.online/game.html" style="color: var(--accent-color); margin: 0 1rem;">Standard Test</a>
+                    <a href="https://digitspantest.online/backward-digit-span.html" style="color: var(--accent-color); margin: 0 1rem;">Backward Test</a>
+                    <a href="https://digitspantest.online/memory-training.html" style="color: var(--accent-color); margin: 0 1rem;">Memory Training</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenu) {
+            mobileMenu.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // Close mobile menu when clicking on a link
+        const navLinkItems = document.querySelectorAll('.nav-links a');
+        navLinkItems.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
