@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test New Card Design</title>
+    <script src="js/share-card-generator.js"></script>
+</head>
+<body>
+    <h1>Testing New Card Design</h1>
+    <button onclick="generate()">Generate Card</button>
+    <div id="result"></div>
+    <script>
+        async function generate() {
+            try {
+                const generator = new ShareCardGenerator();
+                generator.setData({
+                    score: 750,
+                    scoreLevel: 'Excellent',
+                    percentile: 85,
+                    errorRate: 15,
+                    completionTime: '3:20',
+                    suggestions: [
+                        'Continue training to improve memory capacity',
+                        'Try longer digit sequences for better results',
+                        'Practice regularly to maintain progress'
+                    ],
+                    chartData: {
+                        memoryScore: 80,
+                        attentionScore: 75,
+                        speedScore: 85
+                    }
+                });
+                
+                const dataURL = await generator.generate();
+                
+                const img = new Image();
+                img.src = dataURL;
+                img.style.maxWidth = '600px';
+                img.style.border = '2px solid #ccc';
+                img.style.borderRadius = '8px';
+                
+                const result = document.getElementById('result');
+                result.innerHTML = '<h2>Generated Card:</h2>';
+                result.appendChild(img);
+                
+                console.log('Card generated successfully:', dataURL);
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
+            }
+        }
+    </script>
+</body>
+</html>

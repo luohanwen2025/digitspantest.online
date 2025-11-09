@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Card Generator Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #5568d3;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            min-height: 100px;
+        }
+        .success {
+            color: #10b981;
+            font-weight: bold;
+        }
+        .error {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        .card-preview {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .card-preview img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+    </style>
+
+    <!-- Share Card Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <h1>🧪 Share Card Generator - 测试页面</h1>
+
+    <div class="test-section">
+        <h2>任务 1.0 - 基础架构测试</h2>
+        <p>测试 ShareCardGenerator 类的基本功能：</p>
+        <button onclick="testGeneratorCreation()">1. 测试生成器创建</button>
+        <button onclick="testCanvasInit()">2. 测试Canvas初始化</button>
+        <button onclick="testDataSet()">3. 测试数据设置</button>
+        <button onclick="testCardGeneration()">4. 测试卡片生成</button>
+        <button onclick="testCache()">5. 测试缓存功能</button>
+
+        <div id="result"></div>
+        <div class="card-preview" id="cardPreview"></div>
+    </div>
+
+    <!-- Load Share Card Generator -->
+    <script src="js/share-card-generator.js"></script>
+
+    <script>
+        // 测试结果展示
+        function showResult(message, isSuccess = true) {
+            const result = document.getElementById('result');
+            const className = isSuccess ? 'success' : 'error';
+            result.innerHTML = `<p class="${className}">${message}</p>`;
+        }
+
+        // 测试 1: 测试生成器创建
+        function testGeneratorCreation() {
+            try {
+                const generator = new ShareCardGenerator();
+                showResult('✅ ShareCardGenerator 创建成功！');
+                console.log('测试 1: ShareCardGenerator', generator);
+            } catch (error) {
+                showResult('❌ 生成器创建失败: ' + error.message, false);
+                console.error('测试 1 失败:', error);
+            }
+        }
+
+        // 测试 2: 测试Canvas初始化
+        function testCanvasInit() {
+            try {
+                const generator = new ShareCardGenerator();
+                generator.initCanvas();
+
+                if (generator.canvas && generator.ctx) {
+                    showResult(`✅ Canvas 初始化成功！<br>
+                        画布尺寸: ${generator.config.width} x ${generator.config.height}<br>
+                        DPR: ${generator.config.dpr}<br>
+                        实际像素: ${generator.canvas.width} x ${generator.canvas.height}`);
+                } else {
+                    showResult('❌ Canvas 初始化失败', false);
+                }
+            } catch (error) {
+                showResult('❌ Canvas测试失败: ' + error.message, false);
+                console.error('测试 2 失败:', error);
+            }
+        }
+
+        // 测试 3: 测试数据设置
+        function testDataSet() {
+            try {
+                const generator = new ShareCardGenerator();
+                generator.setData({
+                    score: 750,
+                    scoreLevel: 'Excellent',
+                    percentile: 85,
+                    errorRate: 15,
+                    completionTime: '3:20',
+                    chartData: {
+                        memoryScore: 80,
+                        attentionScore: 75,
+                        speedScore: 85
+                    }
+                });
+
+                if (generator.data.score === 750) {
+                    showResult(`✅ 数据设置成功！<br>
+                        分数: ${generator.data.score}<br>
+                        等级: ${generator.data.scoreLevel}<br>
+                        百分位: ${generator.data.percentile}%<br>
+                        记忆分数: ${generator.data.chartData.memoryScore}`);
+                } else {
+                    showResult('❌ 数据验证失败', false);
+                }
+            } catch (error) {
+                showResult('❌ 数据测试失败: ' + error.message, false);
+                console.error('测试 3 失败:', error);
+            }
+        }
+
+        // 测试 4: 测试卡片生成
+        async function testCardGeneration() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>⏳ 正在生成卡片...</p>';
+
+            try {
+                const generator = new ShareCardGenerator();
+                generator.setData({
+                    score: 750,
+                    scoreLevel: 'Excellent',
+                    percentile: 85,
+                    errorRate: 15,
+                    completionTime: '3:20',
+                    chartData: {
+                        memoryScore: 80,
+                        attentionScore: 75,
+                        speedScore: 85
+                    }
+                });
+
+                // Add suggestions
+                generator.data.suggestions = [
+                    'Continue training to improve memory capacity',
+                    'Try longer digit sequences for better results',
+                    'Practice regularly to maintain progress'
+                ];
+
+                const dataURL = await generator.generate();
+
+                if (dataURL) {
+                    showResult('✅ 卡片生成成功！');
+                    showCardPreview(dataURL);
+                } else {
+                    showResult('❌ 卡片生成返回空结果', false);
+                }
+            } catch (error) {
+                showResult('❌ 卡片生成失败: ' + error.message, false);
+                console.error('测试 4 失败:', error);
+            }
+        }
+
+        // 显示卡片预览
+        function showCardPreview(dataURL) {
+            const preview = document.getElementById('cardPreview');
+            preview.innerHTML = `
+                <h3>卡片预览:</h3>
+                <img src="${dataURL}" alt="分享卡片预览">
+                <br>
+                <button onclick="downloadCard('${dataURL}')">下载卡片</button>
+            `;
+        }
+
+        // 下载卡片
+        function downloadCard(dataURL) {
+            const link = document.createElement('a');
+            link.download = 'share-card.png';
+            link.href = dataURL;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // 测试 5: 测试缓存功能
+        function testCache() {
+            try {
+                const generator = new ShareCardGenerator();
+                generator.setData({ score: 500 });
+
+                // 设置缓存
+                generator.setToCache('test-data-url');
+                const cached = generator.getFromCache();
+
+                if (cached === 'test-data-url') {
+                    showResult('✅ 缓存功能正常工作！');
+                } else {
+                    showResult('❌ 缓存验证失败', false);
+                }
+            } catch (error) {
+                showResult('❌ 缓存测试失败: ' + error.message, false);
+                console.error('测试 5 失败:', error);
+            }
+        }
+
+        // 页面加载完成后自动执行基础测试
+        window.addEventListener('DOMContentLoaded', function() {
+            showResult('✅ 测试环境准备就绪！点击上方按钮开始测试。');
+            console.log('ShareCardGenerator类:', window.ShareCardGenerator);
+            console.log('ShareCardData接口:', window.ShareCardData);
+        });
+    </script>
+</body>
+</html>

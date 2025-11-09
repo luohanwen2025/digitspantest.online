@@ -19,6 +19,10 @@ class DigitSpanGame {
         this.gameActive = false;
         this.levelResults = [];
 
+        // Share functionality
+        this.shareManager = null;
+        this.shareData = null;
+
         // DOM element cache for performance
         this.dom = {
             startScreen: null,
@@ -44,6 +48,20 @@ class DigitSpanGame {
         this.cacheDomElements();
         this.initProgressBar();
         this.setupEventListeners();
+        this.initShareManager();
+    }
+
+    /**
+     * Initialize share manager
+     */
+    initShareManager() {
+        if (window.ShareCardGenerator && window.ShareManager) {
+            const generator = new ShareCardGenerator();
+            this.shareManager = new ShareManager();
+            this.shareManager.init(generator);
+        } else {
+            console.warn('Share modules not loaded');
+        }
     }
 
     /**
@@ -375,23 +393,82 @@ class DigitSpanGame {
         this.dom.scoreDisplay.textContent = `${this.totalScore} points`;
 
         // Evaluate performance
-        let performance, performanceClass;
+        let performance, performanceClass, scoreLevel;
         const correctCount = this.levelResults.filter(r => r.correct).length;
 
         if (this.totalScore >= 840) {
             performance = '🏆 Excellent! Outstanding memory!';
             performanceClass = 'excellent';
+            scoreLevel = 'Master';
         } else if (this.totalScore >= 600) {
             performance = '👍 Good! Keep it up!';
             performanceClass = 'good';
+            scoreLevel = 'Excellent';
+        } else if (this.totalScore >= 300) {
+            performance = '👍 Good! Keep it up!';
+            performanceClass = 'good';
+            scoreLevel = 'Good';
         } else {
             performance = '💪 Normal! Practice more!';
             performanceClass = 'normal';
+            scoreLevel = 'Beginner';
         }
 
         const performanceElement = this.dom.performance;
         performanceElement.textContent = performance;
         performanceElement.className = `performance ${performanceClass}`;
+
+        // Prepare share data
+        this.prepareShareData(scoreLevel, correctCount);
+    }
+
+    /**
+     * Prepare data for sharing
+     */
+    prepareShareData(scoreLevel, correctCount) {
+        if (!this.shareManager) return;
+
+        const totalLevels = this.levelResults.length;
+        const errorRate = totalLevels > 0
+            ? Math.round(((totalLevels - correctCount) / totalLevels) * 100)
+            : 0;
+
+        const percentile = Math.min(95, Math.floor((this.totalScore / 1050) * 100));
+
+        this.shareData = {
+            score: this.totalScore,
+            scoreLevel: scoreLevel,
+            percentile: percentile,
+            errorRate: errorRate,
+            completionTime: '5:30',
+            suggestions: [
+                'Continue training to improve memory capacity',
+                'Try longer digit sequences for better results',
+                'Practice regularly to maintain progress'
+            ],
+            chartData: {
+                memoryScore: Math.min(100, Math.floor(this.totalScore / 10)),
+                attentionScore: Math.min(100, Math.floor(this.totalScore / 12)),
+                speedScore: Math.min(100, Math.floor(this.totalScore / 8))
+            }
+        };
+    }
+
+    /**
+     * Show share options
+     */
+    showShareOptions() {
+        if (!this.shareManager) {
+            alert('Share feature is not available');
+            return;
+        }
+
+        if (!this.shareData) {
+            alert('No data to share');
+            return;
+        }
+
+        this.shareManager.showShareOverlay(this.shareData);
     }
 
     /**

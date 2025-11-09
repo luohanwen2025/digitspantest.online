@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Feature - Integration Test</title>
+    <style>
+        body {
+            font-family: Inter, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+        }
+        .test-section {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .success {
+            color: #10b981;
+            font-weight: 600;
+        }
+        .error {
+            color: #ef4444;
+            font-weight: 600;
+        }
+        .card-preview {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .card-preview img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .module-status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            margin: 5px;
+        }
+        .module-status.loaded {
+            background: #10b981;
+            color: white;
+        }
+        .module-status.not-loaded {
+            background: #ef4444;
+            color: white;
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+    </style>
+
+    <!-- Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- Share Modules -->
+    <script src="../js/share-card-generator.js"></script>
+    <script src="../js/share-manager.js"></script>
+    <script src="../js/share-templates.js"></script>
+</head>
+<body>
+    <h1>🧪 Share Feature - Integration Test</h1>
+
+    <div class="test-section">
+        <h2>Module Status</h2>
+        <div id="moduleStatus">
+            <span class="module-status" id="status-card">ShareCardGenerator: Loading...</span>
+            <span class="module-status" id="status-manager">ShareManager: Loading...</span>
+            <span class="module-status" id="status-templates">ShareTemplates: Loading...</span>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 1: Module Loading</h2>
+        <button onclick="testModules()">Test Module Loading</button>
+        <div id="moduleTestResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Card Generation</h2>
+        <button onclick="testCardGeneration()">Test Card Generation</button>
+        <div id="cardGenResult"></div>
+        <div class="card-preview" id="cardPreview"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Share Manager</h2>
+        <button onclick="testShareManager()">Test Share Manager</button>
+        <div id="shareManagerResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 4: Template System</h2>
+        <button onclick="testTemplates()">Test Templates</button>
+        <div id="templateResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 5: Share UI Overlay</h2>
+        <button onclick="testShareOverlay()">Test Share Overlay</button>
+        <div id="overlayResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 6: Full Integration Test</h2>
+        <button onclick="testFullIntegration()">Run Full Integration Test</button>
+        <div id="integrationResult"></div>
+    </div>
+
+    <script>
+        // Test 1: Module Loading
+        function testModules() {
+            const result = document.getElementById('moduleTestResult');
+            const statuses = {
+                card: document.getElementById('status-card'),
+                manager: document.getElementById('status-manager'),
+                templates: document.getElementById('status-templates')
+            };
+
+            // Check ShareCardGenerator
+            if (window.ShareCardGenerator) {
+                statuses.card.textContent = 'ShareCardGenerator: ✓ Loaded';
+                statuses.card.className = 'module-status loaded';
+            } else {
+                statuses.card.textContent = 'ShareCardGenerator: ✗ Not Loaded';
+                statuses.card.className = 'module-status not-loaded';
+            }
+
+            // Check ShareManager
+            if (window.ShareManager) {
+                statuses.manager.textContent = 'ShareManager: ✓ Loaded';
+                statuses.manager.className = 'module-status loaded';
+            } else {
+                statuses.manager.textContent = 'ShareManager: ✗ Not Loaded';
+                statuses.manager.className = 'module-status not-loaded';
+            }
+
+            // Check ShareTemplates
+            if (window.ShareTemplates) {
+                statuses.templates.textContent = 'ShareTemplates: ✓ Loaded';
+                statuses.templates.className = 'module-status loaded';
+            } else {
+                statuses.templates.textContent = 'ShareTemplates: ✗ Not Loaded';
+                statuses.templates.className = 'module-status not-loaded';
+            }
+
+            const allLoaded = window.ShareCardGenerator && window.ShareManager && window.ShareTemplates;
+            result.innerHTML = allLoaded
+                ? '<p class="success">✓ All modules loaded successfully!</p>'
+                : '<p class="error">✗ Some modules failed to load</p>';
+        }
+
+        // Test 2: Card Generation
+        async function testCardGeneration() {
+            const result = document.getElementById('cardGenResult');
+            const preview = document.getElementById('cardPreview');
+            preview.innerHTML = '';
+
+            try {
+                const generator = new ShareCardGenerator();
+                const testData = {
+                    score: 750,
+                    scoreLevel: 'Excellent',
+                    percentile: 85,
+                    errorRate: 15,
+                    completionTime: '3:20',
+                    suggestions: [
+                        'Continue training to improve memory capacity',
+                        'Try longer digit sequences for better results',
+                        'Practice regularly to maintain progress'
+                    ],
+                    chartData: {
+                        memoryScore: 80,
+                        attentionScore: 75,
+                        speedScore: 85
+                    }
+                };
+
+                generator.setData(testData);
+                const dataURL = await generator.generate();
+
+                preview.innerHTML = `
+                    <h3>Generated Card Preview:</h3>
+                    <img src="${dataURL}" alt="Share Card">
+                    <br><br>
+                    <button onclick="downloadImage('${dataURL}')">Download Card</button>
+                `;
+
+                result.innerHTML = '<p class="success">✓ Card generated successfully!</p>';
+            } catch (error) {
+                result.innerHTML = `<p class="error">✗ Card generation failed: ${error.message}</p>`;
+                console.error('Card generation error:', error);
+            }
+        }
+
+        // Test 3: Share Manager
+        function testShareManager() {
+            const result = document.getElementById('shareManagerResult');
+
+            try {
+                const generator = new ShareCardGenerator();
+                const manager = new ShareManager();
+                manager.init(generator);
+
+                const tests = [
+                    { name: 'Web Share API Support', value: manager.isWebShareSupported() },
+                    { name: 'Can Share Files', value: manager.canShareFiles() }
+                ];
+
+                let html = '<div class="test-grid">';
+                tests.forEach(test => {
+                    html += `<div><strong>${test.name}:</strong> ${test.value ? '✓' : '✗'}</div>`;
+                });
+                html += '</div>';
+
+                result.innerHTML = html + '<p class="success">✓ Share Manager initialized successfully!</p>';
+            } catch (error) {
+                result.innerHTML = `<p class="error">✗ Share Manager test failed: ${error.message}</p>`;
+            }
+        }
+
+        // Test 4: Template System
+        function testTemplates() {
+            const result = document.getElementById('templateResult');
+
+            try {
+                const templates = new ShareTemplates();
+                const templateNames = templates.getAllTemplateNames();
+
+                let html = '<h3>Available Templates:</h3><div class="test-grid">';
+                templateNames.forEach(name => {
+                    const template = templates.getTemplate(name);
+                    html += `<div><strong>${template.displayName}</strong><br><small>${template.description}</small></div>`;
+                });
+                html += '</div>';
+
+                result.innerHTML = html + '<p class="success">✓ Template System loaded successfully!</p>';
+            } catch (error) {
+                result.innerHTML = `<p class="error">✗ Template System test failed: ${error.message}</p>`;
+            }
+        }
+
+        // Test 5: Share Overlay
+        async function testShareOverlay() {
+            const result = document.getElementById('overlayResult');
+
+            try {
+                const generator = new ShareCardGenerator();
+                const manager = new ShareManager();
+                manager.init(generator);
+
+                const testData = {
+                    score: 750,
+                    scoreLevel: 'Excellent',
+                    percentile: 85,
+                    errorRate: 15,
+                    completionTime: '3:20',
+                    suggestions: ['Continue training to improve memory capacity'],
+                    chartData: { memoryScore: 80, attentionScore: 75, speedScore: 85 }
+                };
+
+                manager.showShareOverlay(testData);
+
+                result.innerHTML = '<p class="success">✓ Share overlay displayed! (Check popup)</p>';
+            } catch (error) {
+                result.innerHTML = `<p class="error">✗ Share overlay test failed: ${error.message}</p>`;
+            }
+        }
+
+        // Test 6: Full Integration
+        async function testFullIntegration() {
+            const result = document.getElementById('integrationResult');
+            result.innerHTML = '<p>Running integration tests...</p>';
+
+            try {
+                // Test 1: Module loading
+                if (!window.ShareCardGenerator || !window.ShareManager || !window.ShareTemplates) {
+                    throw new Error('Modules not loaded');
+                }
+
+                // Test 2: Card generation
+                const generator = new ShareCardGenerator();
+                const testData = {
+                    score: 750,
+                    scoreLevel: 'Excellent',
+                    percentile: 85,
+                    errorRate: 15,
+                    completionTime: '3:20',
+                    suggestions: ['Continue training to improve memory capacity', 'Try longer digit sequences for better results'],
+                    chartData: { memoryScore: 80, attentionScore: 75, speedScore: 85 }
+                };
+                generator.setData(testData);
+                const dataURL = await generator.generate();
+
+                // Test 3: Share manager
+                const manager = new ShareManager();
+                manager.init(generator);
+
+                // Test 4: Template system
+                const templates = new ShareTemplates();
+                const templateCount = templates.getAllTemplateNames().length;
+
+                result.innerHTML = `
+                    <div class="success">
+                        <h3>✓ Full Integration Test Passed!</h3>
+                        <ul>
+                            <li>All modules loaded successfully</li>
+                            <li>Card generation works</li>
+                            <li>Share manager initialized</li>
+                            <li>${templateCount} templates available</li>
+                        </ul>
+                        <p><strong>Share feature is ready for production!</strong></p>
+                    </div>
+                `;
+            } catch (error) {
+                result.innerHTML = `<p class="error">✗ Integration test failed: ${error.message}</p>`;
+                console.error('Integration test error:', error);
+            }
+        }
+
+        // Utility: Download image
+        function downloadImage(dataURL) {
+            const link = document.createElement('a');
+            link.download = 'test-card.png';
+            link.href = dataURL;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Auto-run module test on load
+        window.addEventListener('DOMContentLoaded', () => {
+            testModules();
+        });
+    </script>
+</body>
+</html>

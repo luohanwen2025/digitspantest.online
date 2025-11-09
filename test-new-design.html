@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test New Card Design v2.0</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        .test-card {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #4338ca;
+        }
+        .card-preview {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .card-preview img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        .success {
+            color: #10b981;
+            font-weight: 600;
+        }
+        .error {
+            color: #ef4444;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 Share Card Generator v2.0 - New Design Test</h1>
+
+    <div class="test-card">
+        <h2>Test 1: Generate Beautiful Card</h2>
+        <button onclick="generateCard()">Generate Card</button>
+        <div id="result1"></div>
+        <div class="card-preview" id="preview1"></div>
+    </div>
+
+    <div class="test-card">
+        <h2>Test 2: Test with Long Text</h2>
+        <button onclick="generateCardLongText()">Generate with Long Text</button>
+        <div id="result2"></div>
+        <div class="card-preview" id="preview2"></div>
+    </div>
+
+    <div class="test-card">
+        <h2>Test 3: Test Different Levels</h2>
+        <button onclick="generateCard('Master')">Master Level</button>
+        <button onclick="generateCard('Excellent')">Excellent Level</button>
+        <button onclick="generateCard('Good')">Good Level</button>
+        <button onclick="generateCard('Beginner')">Beginner Level</button>
+        <div id="result3"></div>
+        <div class="card-preview" id="preview3"></div>
+    </div>
+
+    <script src="js/share-card-generator.js"></script>
+    <script>
+        async function generateCard(level = 'Excellent') {
+            const result = document.getElementById('result3');
+            const preview = document.getElementById('preview3');
+            result.innerHTML = '';
+            preview.innerHTML = '';
+
+            try {
+                const generator = new ShareCardGenerator();
+                generator.setData({
+                    score: level === 'Master' ? 900 :
+                           level === 'Excellent' ? 750 :
+                           level === 'Good' ? 450 : 250,
+                    scoreLevel: level,
+                    percentile: 85,
+                    errorRate: 15,
+                    completionTime: '3:20',
+                    suggestions: [
+                        'Continue training to improve memory capacity and focus',
+                        'Try longer digit sequences for better results and challenge yourself',
+                        'Practice regularly to maintain progress and build consistency'
+                    ],
+                    chartData: {
+                        memoryScore: level === 'Master' ? 95 :
+                                    level === 'Excellent' ? 80 :
+                                    level === 'Good' ? 65 : 45,
+                        attentionScore: level === 'Master' ? 90 :
+                                       level === 'Excellent' ? 75 :
+                                       level === 'Good' ? 60 : 40,
+                        speedScore: level === 'Master' ? 92 :
+                                   level === 'Excellent' ? 85 :
+                                   level === 'Good' ? 70 : 50
+                    }
+                });
+
+                const dataURL = await generator.generate();
+
+                preview.innerHTML = `<img src="${dataURL}" alt="Share Card">`;
+                result.innerHTML = '<p class="success">✓ Beautiful card generated successfully with ' + level + ' level!</p>';
+            } catch (error) {
+                result.innerHTML = '<p class="error">✗ Error: ' + error.message + '</p>';
+                console.error('Error:', error);
+            }
+        }
+
+        async function generateCardLongText() {
+            const result = document.getElementById('result2');
+            const preview = document.getElementById('preview2');
+            result.innerHTML = '';
+            preview.innerHTML = '';
+
+            try {
+                const generator = new ShareCardGenerator();
+                generator.setData({
+                    score: 750,
+                    scoreLevel: 'Excellent',
+                    percentile: 85,
+                    errorRate: 15,
+                    completionTime: '3:20',
+                    suggestions: [
+                        'This is a very long suggestion text that should be properly truncated if it exceeds the maximum width of the container to prevent overflow',
+                        'Another long suggestion that tests the text truncation functionality in the card design',
+                        'Short suggestion'
+                    ],
+                    chartData: {
+                        memoryScore: 80,
+                        attentionScore: 75,
+                        speedScore: 85
+                    }
+                });
+
+                const dataURL = await generator.generate();
+
+                preview.innerHTML = `<img src="${dataURL}" alt="Share Card">`;
+                result.innerHTML = '<p class="success">✓ Card with long text generated successfully!</p>';
+            } catch (error) {
+                result.innerHTML = '<p class="error">✗ Error: ' + error.message + '</p>';
+                console.error('Error:', error);
+            }
+        }
+
+        async function generateCard() {
+            const result = document.getElementById('result1');
+            const preview = document.getElementById('preview1');
+            result.innerHTML = '';
+            preview.innerHTML = '';
+
+            try {
+                const generator = new ShareCardGenerator();
+                generator.setData({
+                    score: 750,
+                    scoreLevel: 'Excellent',
+                    percentile: 85,
+                    errorRate: 15,
+                    completionTime: '3:20',
+                    suggestions: [
+                        'Continue training to improve memory capacity',
+                        'Try longer digit sequences for better results',
+                        'Practice regularly to maintain progress'
+                    ],
+                    chartData: {
+                        memoryScore: 80,
+                        attentionScore: 75,
+                        speedScore: 85
+                    }
+                });
+
+                const dataURL = await generator.generate();
+
+                preview.innerHTML = `<img src="${dataURL}" alt="Share Card">`;
+                result.innerHTML = '<p class="success">✓ Beautiful card generated successfully!</p>';
+            } catch (error) {
+                result.innerHTML = '<p class="error">✗ Error: ' + error.message + '</p>';
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

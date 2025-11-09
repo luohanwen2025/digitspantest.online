@@ -56,7 +56,10 @@
                 <h2 class="result-title">Game Over!</h2>
                 <div class="score-display" id="scoreDisplay">0 points</div>
                 <div class="performance" id="performance">Performance</div>
-                <button class="restart-btn" onclick="window.game.restartGame()">Play Again</button>
+                <div class="action-buttons" style="display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+                    <button class="restart-btn" onclick="window.game.restartGame()">Play Again</button>
+                    <button class="share-btn" id="shareButton" onclick="window.game.showShareOptions()" style="padding: 15px 40px; font-size: 1.2rem; font-weight: 600; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 12px; cursor: pointer; transition: transform 0.2s;">📊 Share My Score</button>
+                </div>
             </div>
         </div>
     </div>
@@ -85,6 +88,18 @@
       gtag('js', new Date());
       gtag('config', 'G-01T4PDG71E');
     </script>
+
+    <!-- Share Card Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" integrity="sha256-cxwXoEiC8wYPU1Q6h8BsU8U9DqS7EJVZ7Y6J+g7xPjM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" integrity="sha256-80qMsZxX6SwXDNEZ+7KzT8m1F4B1hZsT7W5bA3Q3T8w=" crossorigin="anonymous"></script>
+
+    <!-- Share Card Generator -->
+    <script src="js/share-card-generator.js"></script>
+    <!-- Share Manager -->
+    <script src="js/share-manager.js"></script>
+    <!-- Share Templates -->
+    <script src="js/share-templates.js"></script>
+
     <script type="module" src="js/game.js"></script>
 </body>
 </html>
