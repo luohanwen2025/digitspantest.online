@@ -19,6 +19,10 @@
       "use": "@vercel/static"
     },
     {
+      "src": "working-memory.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "memory-training.html",
       "use": "@vercel/static"
     },
