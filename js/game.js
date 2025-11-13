@@ -15,6 +15,8 @@ class DigitSpanGame {
         this.currentLevel = 0;
         this.totalScore = 0;
         this.currentNumber = '';
+        this.sequence = [];
+        this.maxLevel = 12;
         this.timerInterval = null;
         this.gameActive = false;
         this.levelResults = [];
@@ -97,12 +99,12 @@ class DigitSpanGame {
     }
 
     /**
-     * Initialize progress bar with 20 levels
+     * Initialize progress bar with 12 levels
      */
     initProgressBar() {
         const progressGrid = this.dom.progressGrid;
         progressGrid.innerHTML = '';
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 12; i++) {
             const levelBox = document.createElement('div');
             levelBox.className = 'level-box';
             levelBox.textContent = i + 1;
@@ -156,10 +158,16 @@ class DigitSpanGame {
         if (!this.gameActive) return;
 
         this.currentLevel++;
-        const levelScore = this.currentLevel * 5;
+
+        // Check if game is complete
+        if (this.currentLevel > this.maxLevel) {
+            this.showResult();
+            return;
+        }
 
         // Update UI
         this.dom.levelIndicator.textContent = `Level ${this.currentLevel}`;
+        this.dom.currentScore.textContent = this.totalScore;
         this.dom.numberDisplay.textContent = '';
         this.dom.inputArea.style.display = 'none';
         this.dom.answerInput.value = '';
@@ -170,72 +178,54 @@ class DigitSpanGame {
         });
         document.getElementById(`level-${this.currentLevel - 1}`).classList.add('current');
 
-        // Generate random number
-        const digits = this.currentLevel;
-        this.currentNumber = this.generateRandomNumber(digits);
+        // Generate sequence (Level 1 = 2 digits, Level 2 = 3 digits, etc.)
+        const sequenceLength = this.currentLevel + 1;
+        this.sequence = this.generateSequence(sequenceLength);
 
-        // Show number
-        this.showNumber();
+        // Display sequence
+        this.displaySequence();
     }
 
     /**
-     * Generate a random number with specified digit count
+     * Generate a sequence of random digits
      */
-    generateRandomNumber(digits) {
-        let number = '';
-        for (let i = 0; i < digits; i++) {
-            if (i === 0) {
-                number += Math.floor(Math.random() * 9) + 1; // First digit is not 0
+    generateSequence(length) {
+        const seq = [];
+        for (let i = 0; i < length; i++) {
+            seq.push(Math.floor(Math.random() * 10));
+        }
+        return seq;
+    }
+
+    /**
+     * Display sequence digit by digit
+     */
+    displaySequence() {
+        this.dom.inputArea.style.display = 'none';
+        this.dom.numberDisplay.style.display = 'flex';
+
+        let index = 0;
+        const displayInterval = setInterval(() => {
+            if (index < this.sequence.length) {
+                this.dom.numberDisplay.textContent = this.sequence[index];
+                this.dom.numberDisplay.classList.add('fade');
+                setTimeout(() => this.dom.numberDisplay.classList.remove('fade'), 500);
+                index++;
             } else {
-                number += Math.floor(Math.random() * 10);
+                clearInterval(displayInterval);
+                this.showInput();
             }
-        }
-        return number;
+        }, 1000);
     }
 
     /**
-     * Show number and start countdown
+     * Show input box after sequence display
      */
-    showNumber() {
-        this.dom.numberDisplay.textContent = this.currentNumber;
-        this.dom.timerFill.style.width = '100%';
-
-        const totalTime = 5; // 5 seconds total
-        const startTime = performance.now(); // Use performance.now() for precise timing
-
-        // Clear any existing timer
-        if (this.timerInterval) {
-            clearInterval(this.timerInterval);
-        }
-
-        this.timerInterval = setInterval(() => {
-            try {
-                const elapsed = (performance.now() - startTime) / 1000;
-                const timeLeft = Math.max(0, totalTime - elapsed);
-                const percentage = (timeLeft / totalTime) * 100;
-                this.dom.timerFill.style.width = percentage + '%';
-
-                if (timeLeft <= 0) {
-                    clearInterval(this.timerInterval);
-                    this.timerInterval = null;
-                    this.hideNumber();
-                }
-            } catch (error) {
-                console.error('Timer error:', error);
-                clearInterval(this.timerInterval);
-                this.timerInterval = null;
-            }
-        }, 100);
-    }
-
-    /**
-     * Hide number, show input box
-     */
-    hideNumber() {
-        this.dom.numberDisplay.textContent = '?';
+    showInput() {
+        this.dom.numberDisplay.style.display = 'none';
         this.dom.inputArea.style.display = 'flex';
+        this.dom.answerInput.value = '';
         this.dom.answerInput.focus();
-        this.dom.timerFill.style.width = '0%';
     }
 
     /**
@@ -300,14 +290,15 @@ class DigitSpanGame {
         }
 
         // Validate length matches expected digit count
-        const expectedLength = this.currentLevel;
+        const expectedLength = this.sequence.length;
         if (userAnswer.length !== expectedLength) {
             this.showError(`Expected ${expectedLength} digits`);
             return;
         }
 
-        const isCorrect = userAnswer === this.currentNumber;
-        const levelScore = this.currentLevel * 5;
+        // Convert sequence array to string for comparison (forward order)
+        const correctAnswer = this.sequence.join('');
+        const isCorrect = userAnswer === correctAnswer;
 
         // Hide input area immediately to prevent multiple submissions
         this.dom.inputArea.style.display = 'none';
@@ -320,21 +311,21 @@ class DigitSpanGame {
         levelBox.classList.remove('current');
         if (isCorrect) {
             levelBox.classList.add('correct');
+            const levelScore = this.currentLevel * 5;
             this.totalScore += levelScore;
             this.levelResults.push({ level: this.currentLevel, correct: true, score: levelScore });
 
             // Update real-time score display with animation
             this.animateScoreUpdate(levelScore);
+
+            // Proceed to next level
+            setTimeout(() => this.startLevel(), 1500);
         } else {
             levelBox.classList.add('incorrect');
             this.levelResults.push({ level: this.currentLevel, correct: false, score: 0 });
-        }
 
-        // Check if game is over
-        if (this.currentLevel >= 20) {
+            // End game immediately on incorrect answer
             setTimeout(() => this.showResult(), 1500);
-        } else {
-            setTimeout(() => this.startLevel(), 1500);
         }
     }
 
@@ -392,19 +383,19 @@ class DigitSpanGame {
         this.dom.resultScreen.style.display = 'block';
         this.dom.scoreDisplay.textContent = `${this.totalScore} points`;
 
-        // Evaluate performance
+        // Evaluate performance (adjusted for 510 max score)
         let performance, performanceClass, scoreLevel;
         const correctCount = this.levelResults.filter(r => r.correct).length;
 
-        if (this.totalScore >= 840) {
+        if (this.totalScore >= 400) {
             performance = '🏆 Excellent! Outstanding memory!';
             performanceClass = 'excellent';
             scoreLevel = 'Master';
-        } else if (this.totalScore >= 600) {
+        } else if (this.totalScore >= 250) {
             performance = '👍 Good! Keep it up!';
             performanceClass = 'good';
             scoreLevel = 'Excellent';
-        } else if (this.totalScore >= 300) {
+        } else if (this.totalScore >= 150) {
             performance = '👍 Good! Keep it up!';
             performanceClass = 'good';
             scoreLevel = 'Good';
@@ -433,23 +424,23 @@ class DigitSpanGame {
             ? Math.round(((totalLevels - correctCount) / totalLevels) * 100)
             : 0;
 
-        const percentile = Math.min(95, Math.floor((this.totalScore / 1050) * 100));
+        const percentile = Math.min(95, Math.floor((this.totalScore / 510) * 100));
 
         this.shareData = {
             score: this.totalScore,
             scoreLevel: scoreLevel,
             percentile: percentile,
             errorRate: errorRate,
-            completionTime: '5:30',
+            completionTime: '4:20',
             suggestions: [
                 'Continue training to improve memory capacity',
                 'Try longer digit sequences for better results',
                 'Practice regularly to maintain progress'
             ],
             chartData: {
-                memoryScore: Math.min(100, Math.floor(this.totalScore / 10)),
-                attentionScore: Math.min(100, Math.floor(this.totalScore / 12)),
-                speedScore: Math.min(100, Math.floor(this.totalScore / 8))
+                memoryScore: Math.min(100, Math.floor(this.totalScore / 5)),
+                attentionScore: Math.min(100, Math.floor(this.totalScore / 6)),
+                speedScore: Math.min(100, Math.floor(this.totalScore / 4))
             }
         };
     }

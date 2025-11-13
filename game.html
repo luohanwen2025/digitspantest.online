@@ -20,14 +20,15 @@
             <div class="start-screen" id="startScreen">
                 <h1 class="game-title">Digit Span Test - Memory Training</h1>
                 <div class="game-rules">
-                    <h2>Game Rules</h2>
+                    <h2>Test Rules:</h2>
                     <ul>
-                        <li>20 levels total, 5 seconds per level</li>
-                        <li>Start with 1-digit numbers, up to 20 digits</li>
-                        <li>Memorize the number within the countdown</li>
-                        <li>Enter the number after countdown ends</li>
-                        <li>Level 1: 5 points, Level 2: 10 points... Level 20: 100 points</li>
-                        <li>Total 1050 points, 840+ points is excellent</li>
+                        <li>12 levels total, each level shows numbers automatically</li>
+                        <li>Numbers appear for 1 second each</li>
+                        <li>Memorize the entire sequence</li>
+                        <li><strong>Enter numbers in the SAME order!</strong></li>
+                        <li>Level 1: 2 digits, Level 2: 3 digits... up to 12 digits</li>
+                        <li>Scoring: Level 1 = 5 points, Level 2 = 10 points... Level 12 = 60 points</li>
+                        <li>Total: 510 points maximum</li>
                     </ul>
                 </div>
                 <button class="start-btn" onclick="window.game.startGame()">Start Game</button>
@@ -38,7 +39,7 @@
                     <div class="score-indicator" id="scoreIndicator">
                         <span class="score-label">Score: </span>
                         <span class="score-value" id="currentScore">0</span>
-                        <span class="score-max">/ 1050</span>
+                        <span class="score-max">/ 510</span>
                     </div>
                 </div>
                 <div class="timer-bar">
@@ -47,7 +48,7 @@
                 <div class="number-display" id="numberDisplay"></div>
                 <div class="input-area" id="inputArea">
                     <label for="answerInput" class="sr-only">Enter the number you memorized</label>
-                    <input type="text" class="answer-input" id="answerInput" placeholder="Enter number" maxlength="20" inputmode="numeric" pattern="[0-9]*" autocomplete="off" spellcheck="false" aria-label="Enter the number you memorized" aria-describedby="input-help">
+                    <input type="text" class="answer-input" id="answerInput" placeholder="Enter numbers in order" maxlength="12" inputmode="numeric" pattern="[0-9]*" autocomplete="off" spellcheck="false" aria-label="Enter the number you memorized" aria-describedby="input-help">
                     <div id="input-help" class="sr-only">Enter the exact number of digits shown. Use keyboard or on-screen keyboard.</div>
                     <button class="submit-btn" id="submitBtn" onclick="window.game.submitAnswer()" aria-label="Submit your answer">Submit Answer</button>
                 </div>
