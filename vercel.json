@@ -27,6 +27,10 @@
       "use": "@vercel/static"
     },
     {
+      "src": "memory-techniques.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "*.xml",
       "use": "@vercel/static"
     },
