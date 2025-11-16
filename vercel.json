@@ -35,6 +35,10 @@
       "use": "@vercel/static"
     },
     {
+      "src": "privacy-policy.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "*.xml",
       "use": "@vercel/static"
     },
