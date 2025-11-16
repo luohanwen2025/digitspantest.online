@@ -39,6 +39,10 @@
       "use": "@vercel/static"
     },
     {
+      "src": "terms-of-service.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "*.xml",
       "use": "@vercel/static"
     },
