@@ -31,6 +31,10 @@
       "use": "@vercel/static"
     },
     {
+      "src": "contact.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "*.xml",
       "use": "@vercel/static"
     },
