@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Performance Test | DigitSpanTest.online</title>
+    <meta name="description" content="Test Core Web Vitals performance metrics for the blog section.">
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/blog/assets/css/blog.css" as="style">
+    <link rel="preload" href="/blog/assets/js/performance-monitor.js" as="script">
+
+    <!-- Critical CSS Inline -->
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .metric-card {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            transition: transform 0.2s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .metric-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .metric-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .status-good {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .status-needs-improvement {
+            background: var(--warning-color);
+            color: white;
+        }
+
+        .status-poor {
+            background: var(--error-color);
+            color: white;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .controls {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            margin: 0 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e5e7eb;
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .recommendations {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .recommendations h3 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .recommendations ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .recommendations li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .recommendations li:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .metric-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🚀 Blog Performance Test</h1>
+            <p>Testing Core Web Vitals and performance metrics for the blog section. Monitor CLS, LCP, FID, and other key metrics.</p>
+        </header>
+
+        <div class="controls">
+            <button class="btn" onclick="startTest()">Start Performance Test</button>
+            <button class="btn" onclick="simulateLayoutShift()">Simulate Layout Shift</button>
+            <button class="btn" onclick="reportMetrics()">Report Metrics</button>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p>Collecting performance metrics...</p>
+        </div>
+
+        <div id="metrics" class="metrics-grid" style="display: none;">
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">CLS (Cumulative Layout Shift)</span>
+                    <span id="cls-status" class="metric-status">Measuring...</span>
+                </div>
+                <div id="cls-value" class="metric-value">0.0000</div>
+                <div class="metric-description">Measures visual stability. Lower is better (< 0.1 is good)</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">LCP (Largest Contentful Paint)</span>
+                    <span id="lcp-status" class="metric-status">Measuring...</span>
+                </div>
+                <div id="lcp-value" class="metric-value">0ms</div>
+                <div class="metric-description">Measures loading performance. Lower is better (< 2.5s is good)</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">FID (First Input Delay)</span>
+                    <span id="fid-status" class="metric-status">Measuring...</span>
+                </div>
+                <div id="fid-value" class="metric-value">0ms</div>
+                <div class="metric-description">Measures interactivity. Lower is better (< 100ms is good)</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">FCP (First Contentful Paint)</span>
+                    <span id="fcp-status" class="metric-status">Measuring...</span>
+                </div>
+                <div id="fcp-value" class="metric-value">0ms</div>
+                <div class="metric-description">Measures first content paint. Lower is better (< 1.8s is good)</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">TTFB (Time to First Byte)</span>
+                    <span id="ttfb-status" class="metric-status">Measuring...</span>
+                </div>
+                <div id="ttfb-value" class="metric-value">0ms</div>
+                <div class="metric-description">Measures server response time. Lower is better (< 800ms is good)</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <span class="metric-title">INP (Interaction to Next Paint)</span>
+                    <span id="inp-status" class="metric-status">Measuring...</span>
+                </div>
+                <div id="inp-value" class="metric-value">0ms</div>
+                <div class="metric-description">Measures overall responsiveness. Lower is better (< 200ms is good)</div>
+            </div>
+        </div>
+
+        <div id="recommendations" class="recommendations" style="display: none;">
+            <h3>📊 Performance Recommendations</h3>
+            <ul id="recommendations-list">
+            </ul>
+        </div>
+    </div>
+
+    <!-- Core Web Vitals Performance Monitoring -->
+    <script src="/blog/assets/js/performance-monitor.js"></script>
+
+    <script>
+        let testStarted = false;
+
+        function startTest() {
+            if (testStarted) return;
+            testStarted = true;
+
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('metrics').style.display = 'none';
+            document.getElementById('recommendations').style.display = 'none';
+
+            // Wait for performance monitor to initialize
+            setTimeout(() => {
+                updateMetrics();
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('metrics').style.display = 'grid';
+                document.getElementById('recommendations').style.display = 'block';
+                generateRecommendations();
+            }, 2000);
+        }
+
+        function updateMetrics() {
+            if (!window.performanceMonitor) return;
+
+            const metrics = window.performanceMonitor.getMetrics();
+
+            // Update CLS
+            const clsElement = document.getElementById('cls-value');
+            const clsStatus = document.getElementById('cls-status');
+            clsElement.textContent = metrics.cls.toFixed(4);
+            updateStatus(clsStatus, metrics.cls, 0.1, 0.25, 'CLS');
+
+            // Update LCP
+            const lcpElement = document.getElementById('lcp-value');
+            const lcpStatus = document.getElementById('lcp-status');
+            lcpElement.textContent = Math.round(metrics.lcp) + 'ms';
+            updateStatus(lcpStatus, metrics.lcp, 2500, 4000, 'LCP');
+
+            // Update FID
+            const fidElement = document.getElementById('fid-value');
+            const fidStatus = document.getElementById('fid-status');
+            fidElement.textContent = Math.round(metrics.fid) + 'ms';
+            updateStatus(fidStatus, metrics.fid, 100, 300, 'FID');
+
+            // Update FCP
+            const fcpElement = document.getElementById('fcp-value');
+            const fcpStatus = document.getElementById('fcp-status');
+            fcpElement.textContent = Math.round(metrics.fcp) + 'ms';
+            updateStatus(fcpStatus, metrics.fcp, 1800, 3000, 'FCP');
+
+            // Update TTFB
+            const ttfbElement = document.getElementById('ttfb-value');
+            const ttfbStatus = document.getElementById('ttfb-status');
+            ttfbElement.textContent = Math.round(metrics.ttfb) + 'ms';
+            updateStatus(ttfbStatus, metrics.ttfb, 800, 1800, 'TTFB');
+
+            // Update INP
+            const inpElement = document.getElementById('inp-value');
+            const inpStatus = document.getElementById('inp-status');
+            inpElement.textContent = Math.round(metrics.inp) + 'ms';
+            updateStatus(inpStatus, metrics.inp, 200, 500, 'INP');
+        }
+
+        function updateStatus(element, value, goodThreshold, needsImprovementThreshold, metric) {
+            element.classList.remove('status-good', 'status-needs-improvement', 'status-poor');
+
+            if (metric === 'CLS') {
+                if (value < goodThreshold) {
+                    element.classList.add('status-good');
+                    element.textContent = 'Good';
+                } else if (value < needsImprovementThreshold) {
+                    element.classList.add('status-needs-improvement');
+                    element.textContent = 'Needs Improvement';
+                } else {
+                    element.classList.add('status-poor');
+                    element.textContent = 'Poor';
+                }
+            } else {
+                if (value < goodThreshold) {
+                    element.classList.add('status-good');
+                    element.textContent = 'Good';
+                } else if (value < needsImprovementThreshold) {
+                    element.classList.add('status-needs-improvement');
+                    element.textContent = 'Needs Improvement';
+                } else {
+                    element.classList.add('status-poor');
+                    element.textContent = 'Poor';
+                }
+            }
+        }
+
+        function simulateLayoutShift() {
+            // Create a layout shift to test CLS monitoring
+            const element = document.createElement('div');
+            element.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                color: white;
+                padding: 2rem;
+                border-radius: 12px;
+                text-align: center;
+                z-index: 1000;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            `;
+            element.innerHTML = `
+                <h3>Layout Shift Simulated! 📊</h3>
+                <p>This will contribute to your CLS score.</p>
+                <button onclick="this.parentElement.remove()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: white; color: #667eea; border: none; border-radius: 4px; cursor: pointer;">Close</button>
+            `;
+            document.body.appendChild(element);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                if (element.parentElement) {
+                    element.remove();
+                }
+            }, 3000);
+        }
+
+        function reportMetrics() {
+            if (window.performanceMonitor) {
+                window.performanceMonitor.reportMetrics();
+                alert('📊 Metrics reported to console and analytics!');
+            } else {
+                alert('❌ Performance monitor not available');
+            }
+        }
+
+        function generateRecommendations() {
+            const recommendations = [];
+            const metrics = window.performanceMonitor.getMetrics();
+
+            if (metrics.cls > 0.1) {
+                recommendations.push('High CLS detected: Add explicit dimensions to images and avoid dynamic content shifts');
+            }
+
+            if (metrics.lcp > 2500) {
+                recommendations.push('Slow LCP: Optimize images, use CDN, and reduce server response time');
+            }
+
+            if (metrics.fid > 100) {
+                recommendations.push('High FID: Minimize main thread blocking and optimize JavaScript');
+            }
+
+            if (metrics.fcp > 1800) {
+                recommendations.push('Slow FCP: Inline critical CSS and optimize font loading');
+            }
+
+            if (metrics.ttfb > 800) {
+                recommendations.push('High TTFB: Optimize server response time and use CDN');
+            }
+
+            if (metrics.inp > 200) {
+                recommendations.push('High INP: Optimize event handlers and reduce main thread work');
+            }
+
+            if (recommendations.length === 0) {
+                recommendations.push('🎉 Great job! All Core Web Vitals are performing well.');
+                recommendations.push('Keep monitoring and optimizing as you add new content.');
+            }
+
+            const list = document.getElementById('recommendations-list');
+            list.innerHTML = recommendations.map(rec => `<li>${rec}</li>`).join('');
+        }
+
+        // Auto-start test after page load
+        window.addEventListener('load', () => {
+            setTimeout(startTest, 1000);
+        });
+    </script>
+</body>
+</html>

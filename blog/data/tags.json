@@ -1,0 +1,178 @@
+{
+    "tags": [
+        {
+            "id": "working-memory",
+            "name": "Working Memory",
+            "description": "Articles about working memory improvement and training",
+            "articleCount": 3
+        },
+        {
+            "id": "memory-techniques",
+            "name": "Memory Techniques",
+            "description": "Various memory improvement methods and strategies",
+            "articleCount": 3
+        },
+        {
+            "id": "study-tips",
+            "name": "Study Tips",
+            "description": "Effective study strategies and learning methods",
+            "articleCount": 2
+        },
+        {
+            "id": "cognitive-science",
+            "name": "Cognitive Science",
+            "description": "Scientific research and insights about cognition",
+            "articleCount": 2
+        },
+        {
+            "id": "brain-training",
+            "name": "Brain Training",
+            "description": "Brain exercises and cognitive training methods",
+            "articleCount": 2
+        },
+        {
+            "id": "digit-span",
+            "name": "Digit Span",
+            "description": "Articles about digit span tests and cognitive assessment",
+            "articleCount": 1
+        },
+        {
+            "id": "memory-palace",
+            "name": "Memory Palace",
+            "description": "Method of loci and spatial memory techniques",
+            "articleCount": 1
+        },
+        {
+            "id": "chunking",
+            "name": "Chunking",
+            "description": "Information chunking and grouping strategies",
+            "articleCount": 1
+        },
+        {
+            "id": "dual-n-back",
+            "name": "Dual N-Back",
+            "description": "Dual n-back training and working memory exercises",
+            "articleCount": 1
+        },
+        {
+            "id": "apps",
+            "name": "Apps",
+            "description": "Mobile apps and digital tools for memory training",
+            "articleCount": 1
+        },
+        {
+            "id": "research",
+            "name": "Research",
+            "description": "Scientific studies and research findings",
+            "articleCount": 1
+        },
+        {
+            "id": "effectiveness",
+            "name": "Effectiveness",
+            "description": "Studies on effectiveness and evidence-based methods",
+            "articleCount": 1
+        },
+        {
+            "id": "mnemonics",
+            "name": "Mnemonics",
+            "description": "Mnemonic devices and memory aids",
+            "articleCount": 1
+        },
+        {
+            "id": "visualization",
+            "name": "Visualization",
+            "description": "Visual memory and imagery techniques",
+            "articleCount": 1
+        },
+        {
+            "id": "memory-strategy",
+            "name": "Memory Strategy",
+            "description": "Strategic approaches to memory improvement",
+            "articleCount": 1
+        },
+        {
+            "id": "cognitive-load",
+            "name": "Cognitive Load",
+            "description": "Cognitive load theory and management",
+            "articleCount": 1
+        },
+        {
+            "id": "information-processing",
+            "name": "Information Processing",
+            "description": "How the brain processes and stores information",
+            "articleCount": 1
+        },
+        {
+            "id": "memory-competition",
+            "name": "Memory Competition",
+            "description": "Memory sports and competition techniques",
+            "articleCount": 1
+        },
+        {
+            "id": "learning-strategies",
+            "name": "Learning Strategies",
+            "description": "Effective learning methods and approaches",
+            "articleCount": 1
+        },
+        {
+            "id": "academic-success",
+            "name": "Academic Success",
+            "description": "Strategies for academic achievement and performance",
+            "articleCount": 1
+        },
+        {
+            "id": "cognitive-decline",
+            "name": "Cognitive Decline",
+            "description": "Age-related cognitive decline and prevention strategies",
+            "articleCount": 1
+        },
+        {
+            "id": "prevention",
+            "name": "Prevention",
+            "description": "Preventive strategies for cognitive health",
+            "articleCount": 1
+        },
+        {
+            "id": "brain-health",
+            "name": "Brain Health",
+            "description": "Overall brain health and maintenance",
+            "articleCount": 1
+        },
+        {
+            "id": "aging",
+            "name": "Aging",
+            "description": "Cognitive aging and age-related changes",
+            "articleCount": 1
+        },
+        {
+            "id": "neuroscience",
+            "name": "Neuroscience",
+            "description": "Neuroscience research and brain science",
+            "articleCount": 1
+        },
+        {
+            "id": "cognitive-improvement",
+            "name": "Cognitive Improvement",
+            "description": "Methods and techniques for improving cognitive function",
+            "articleCount": 1
+        },
+        {
+            "id": "n-back-task",
+            "name": "N-Back Task",
+            "description": "N-back working memory task and variations",
+            "articleCount": 1
+        },
+        {
+            "id": "cognitive-enhancement",
+            "name": "Cognitive Enhancement",
+            "description": "Methods for enhancing cognitive abilities and performance",
+            "articleCount": 1
+        },
+        {
+            "id": "students",
+            "name": "Students",
+            "description": "Content specifically for students and academic success",
+            "articleCount": 1
+        }
+    ]
+}

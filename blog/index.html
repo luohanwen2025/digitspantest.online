@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Memory Training & Cognitive Science | DigitSpanTest.online</title>
+    <meta name="description" content="Discover science-backed memory techniques, cognitive training tips, and brain health insights. Expert articles on working memory, study strategies, and mental performance.">
+    <meta name="keywords" content="memory training blog, cognitive science articles, working memory tips, brain training, memory techniques, study strategies">
+    <meta name="author" content="DigitSpanTest.online">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Blog - Memory Training & Cognitive Science | DigitSpanTest.online">
+    <meta property="og:description" content="Discover science-backed memory techniques, cognitive training tips, and brain health insights. Expert articles on working memory, study strategies, and mental performance.">
+    <meta property="og:url" content="https://digitspantest.online/blog/">
+    <meta property="og:image" content="https://digitspantest.online/blog/assets/images/blog-og.jpg">
+    <meta property="og:site_name" content="DigitSpanTest.online">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog - Memory Training & Cognitive Science | DigitSpanTest.online">
+    <meta name="twitter:description" content="Discover science-backed memory techniques, cognitive training tips, and brain health insights. Expert articles on working memory, study strategies, and mental performance.">
+    <meta name="twitter:image" content="https://digitspantest.online/blog/assets/images/blog-og.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://digitspantest.online/blog/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/blog/data/articles.json" as="fetch" type="application/json">
+    <link rel="preload" href="/blog/assets/css/blog.css" as="style">
+    <link rel="preload" href="/blog/assets/js/blog.js" as="script">
+    <link rel="preload" href="/blog/assets/js/performance-monitor.js" as="script">
+
+    <!-- Critical CSS Inline for Performance -->
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --gradient-accent: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header - Critical Styles */
+        .blog-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s ease;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .nav-links .active {
+            border-bottom: 2px solid white;
+        }
+
+        /* Hero Section */
+        .blog-hero {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, white 100%);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Search Box */
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .search-button {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 2.5rem;
+            height: 2.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Category Filter */
+        .category-filter {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .category-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border-color);
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Article Grid */
+        .articles-container {
+            padding: 2rem 0;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            background: var(--gradient-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+
+        .category-tag {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .article-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .article-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .article-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .article-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .article-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .no-results h3 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        .blog-footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 0.8;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .search-container {
+                margin: 0 1rem 2rem;
+            }
+
+            .category-filter {
+                padding: 0 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Performance Optimizations */
+        .lazyload {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .lazyloaded {
+            opacity: 1;
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .blog-header,
+            .blog-footer,
+            .search-container,
+            .category-filter {
+                display: none;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .article-card {
+                box-shadow: none;
+                border: 1px solid var(--border-color);
+                break-inside: avoid;
+            }
+        }
+    </style>
+
+    <!-- Async CSS Loading -->
+    <link rel="preload" href="/blog/assets/css/blog.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/blog/assets/css/blog.css"></noscript>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="https://digitspantest.online/" class="logo">🧠 DigitSpanTest.online</a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="https://digitspantest.online/">Home</a></li>
+                        <li><a href="https://digitspantest.online/game.html">Standard Test</a></li>
+                        <li><a href="https://digitspantest.online/backward-digit-span.html">Backward Test</a></li>
+                        <li><a href="https://digitspantest.online/memory-techniques.html">Memory Techniques</a></li>
+                        <li><a href="/blog/" class="active">Blog</a></li>
+                        <li><a href="https://digitspantest.online/contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Memory Training & Cognitive Science Blog</h1>
+                <p>Discover science-backed techniques to improve your memory, boost cognitive performance, and enhance learning efficiency. Expert insights on brain training, working memory, and mental optimization.</p>
+                <!-- Search Container -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search articles..." autocomplete="off">
+                    <button class="search-button" aria-label="Search">🔍</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="container">
+        <div class="category-filter" id="categoryFilter">
+            <button class="category-btn active" data-category="all">All Articles</button>
+            <button class="category-btn" data-category="memory-techniques">Memory Techniques</button>
+            <button class="category-btn" data-category="cognitive-science">Cognitive Science</button>
+            <button class="category-btn" data-category="brain-training">Brain Training</button>
+            <button class="category-btn" data-category="study-tips">Study Tips</button>
+        </div>
+    </section>
+
+    <!-- Articles Container -->
+    <section class="articles-container container">
+        <div id="articlesGrid" class="articles-grid">
+            <!-- Articles will be loaded dynamically -->
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <p>Loading articles...</p>
+            </div>
+        </div>
+
+        <!-- No Results Message -->
+        <div id="noResults" class="no-results" style="display: none;">
+            <h3>No articles found</h3>
+            <p>Try adjusting your search terms or browse all categories.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="blog-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Our Blog</h3>
+                    <p>Discover science-backed memory techniques, cognitive training tips, and brain health insights from our team of cognitive science experts.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="/blog/category/memory-techniques/">Memory Techniques</a></li>
+                        <li><a href="/blog/category/cognitive-science/">Cognitive Science</a></li>
+                        <li><a href="/blog/category/brain-training/">Brain Training</a></li>
+                        <li><a href="/blog/category/study-tips/">Study Tips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="https://digitspantest.online/">Home</a></li>
+                        <li><a href="https://digitspantest.online/game.html">Standard Test</a></li>
+                        <li><a href="https://digitspantest.online/backward-digit-span.html">Backward Test</a></li>
+                        <li><a href="https://digitspantest.online/memory-techniques.html">Memory Techniques</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="/contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #333;">
+                <p style="color: var(--text-light); font-size: 0.9rem;">&copy; 2025 DigitSpanTest.online. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/blog/assets/js/blog.js" defer></script>
+    <script src="/blog/assets/js/search.js" defer></script>
+
+    <!-- Performance Monitoring -->
+    <script>
+        // Monitor Core Web Vitals
+        if ('PerformanceObserver' in window) {
+            // LCP (Largest Contentful Paint)
+            new PerformanceObserver((entryList) => {
+                for (const entry of entryList.getEntries()) {
+                    console.log('LCP:', entry.startTime);
+                    if (entry.startTime > 1000) {
+                        console.warn('LCP exceeds 1 second target');
+                    }
+                }
+            }).observe({entryTypes: ['largest-contentful-paint']});
+
+            // FID (First Input Delay)
+            new PerformanceObserver((entryList) => {
+                for (const entry of entryList.getEntries()) {
+                    console.log('FID:', entry.processingStart - entry.startTime);
+                    if (entry.processingStart - entry.startTime > 50) {
+                        console.warn('FID exceeds 50ms target');
+                    }
+                }
+            }).observe({entryTypes: ['first-input']});
+        }
+    </script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Memory Training & Cognitive Science Blog",
+        "description": "Discover science-backed memory techniques, cognitive training tips, and brain health insights.",
+        "url": "https://digitspantest.online/blog/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "DigitSpanTest.online",
+            "url": "https://digitspantest.online/"
+        },
+        "blogPost": [],
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://digitspantest.online/blog/"
+        }
+    }
+    </script>
+
+    <!-- Core Web Vitals Performance Monitoring -->
+    <script src="/blog/assets/js/performance-monitor.js" defer></script>
+</body>
+</html>

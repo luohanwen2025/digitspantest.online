@@ -1,0 +1,162 @@
+{
+    "articles": [
+        {
+            "id": "working-memory-tips-students-2024",
+            "title": "10 Science-Backed Working Memory Tips for Students",
+            "slug": "working-memory-tips-students",
+            "category": "memory-techniques",
+            "tags": ["working-memory", "study-tips", "cognitive-enhancement", "students"],
+            "date": "2024-11-20",
+            "author": "DigitSpanTest Team",
+            "excerpt": "Discover proven techniques to boost your working memory capacity and academic performance. From chunking strategies to dual n-back training, learn how to optimize your cognitive abilities for better learning outcomes.",
+            "image": "/blog/assets/images/working-memory-tips.jpg",
+            "readingTime": "8 min read",
+            "views": 1250,
+            "featured": true,
+            "contentFile": "/blog/posts/2024/november/working-memory-tips-students.html",
+            "meta": {
+                "description": "Learn 10 scientifically proven working memory techniques to improve academic performance and cognitive abilities.",
+                "keywords": "working memory tips, study techniques, cognitive enhancement, memory improvement, student success"
+            }
+        },
+        {
+            "id": "digit-span-test-science-explained",
+            "title": "Digit Span Test Science Explained: What Your Score Really Means",
+            "slug": "digit-span-test-science-explained",
+            "category": "cognitive-science",
+            "tags": ["digit-span", "cognitive-assessment", "working-memory", "neuroscience"],
+            "date": "2024-11-18",
+            "author": "Dr. Sarah Chen",
+            "excerpt": "Uncover the neuroscience behind digit span tests and understand what your results reveal about your cognitive abilities. Learn how this simple test measures working memory capacity and predicts academic success.",
+            "image": "/blog/assets/images/digit-span-science.jpg",
+            "readingTime": "12 min read",
+            "views": 892,
+            "featured": true,
+            "contentFile": "/blog/posts/2024/november/digit-span-test-science-explained.html",
+            "meta": {
+                "description": "Understand the science behind digit span tests and what your scores mean for cognitive performance.",
+                "keywords": "digit span test, working memory assessment, cognitive science, memory testing, neuroscience"
+            }
+        },
+        {
+            "id": "memory-palace-technique-complete-guide",
+            "title": "The Memory Palace Technique: A Complete Guide for Beginners",
+            "slug": "memory-palace-technique-complete-guide",
+            "category": "memory-techniques",
+            "tags": ["memory-palace", "mnemonics", "memory-techniques", "visualization"],
+            "date": "2024-11-15",
+            "author": "Memory Expert Team",
+            "excerpt": "Master the ancient art of memory palace construction. This comprehensive guide teaches you step-by-step how to build and use memory palaces for remembering anything from shopping lists to complex information.",
+            "image": "/blog/assets/images/memory-palace.jpg",
+            "readingTime": "15 min read",
+            "views": 2103,
+            "featured": false,
+            "contentFile": "/blog/posts/2024/november/memory-palace-technique-complete-guide.html",
+            "meta": {
+                "description": "Learn how to use the memory palace technique with this comprehensive beginner's guide including step-by-step instructions.",
+                "keywords": "memory palace technique, method of loci, mnemonics, memory improvement, visualization techniques"
+            }
+        },
+        {
+            "id": "brain-training-apps-that-work-2024",
+            "title": "Do Brain Training Apps Really Work? 2024 Research Review",
+            "slug": "brain-training-apps-that-work-2024",
+            "category": "brain-training",
+            "tags": ["brain-training", "apps", "research", "effectiveness", "cognitive-games"],
+            "date": "2024-11-12",
+            "author": "Research Team",
+            "excerpt": "Examine the latest scientific research on brain training apps and their effectiveness. Discover which apps show real cognitive benefits and learn how to choose evidence-based brain training programs.",
+            "image": "/blog/assets/images/brain-training-apps.jpg",
+            "readingTime": "10 min read",
+            "views": 1547,
+            "featured": false,
+            "contentFile": "/blog/posts/2024/november/brain-training-apps-that-work-2024.html",
+            "meta": {
+                "description": "Review of 2024 research on brain training apps effectiveness and how to choose evidence-based programs.",
+                "keywords": "brain training apps, cognitive games, memory apps, research review, effectiveness study"
+            }
+        },
+        {
+            "id": "chunking-memory-strategy-science",
+            "title": "Chunking Memory Strategy: The Science Behind Grouping Information",
+            "slug": "chunking-memory-strategy-science",
+            "category": "memory-techniques",
+            "tags": ["chunking", "memory-strategy", "cognitive-load", "information-processing"],
+            "date": "2024-11-10",
+            "author": "Cognitive Science Team",
+            "excerpt": "Explore the psychological principles behind chunking and learn how to apply this powerful memory strategy to improve information retention and recall in daily life and academic settings.",
+            "image": "/blog/assets/images/chunking-strategy.jpg",
+            "readingTime": "9 min read",
+            "views": 1789,
+            "featured": false,
+            "contentFile": "/blog/posts/2024/november/chunking-memory-strategy-science.html",
+            "meta": {
+                "description": "Learn the science behind chunking memory strategy and how to apply it for better information retention.",
+                "keywords": "chunking memory, information processing, cognitive load, memory strategy, learning techniques"
+            }
+        },
+        {
+            "id": "dual-n-back-training-complete-guide",
+            "title": "Dual N-Back Training: Complete Guide to Improving Working Memory",
+            "slug": "dual-n-back-training-complete-guide",
+            "category": "brain-training",
+            "tags": ["dual-n-back", "working-memory", "brain-training", "cognitive-improvement"],
+            "date": "2024-11-08",
+            "author": "Brain Training Expert",
+            "excerpt": "Master dual n-back training with this comprehensive guide. Learn the science, benefits, and proper techniques for this proven working memory enhancement method used by researchers worldwide.",
+            "image": "/blog/assets/images/dual-n-back.jpg",
+            "readingTime": "11 min read",
+            "views": 967,
+            "featured": false,
+            "contentFile": "/blog/posts/2024/november/dual-n-back-training-complete-guide.html",
+            "meta": {
+                "description": "Complete guide to dual n-back training for improving working memory and cognitive performance.",
+                "keywords": "dual n-back training, working memory improvement, brain training, cognitive enhancement, n-back task"
+            }
+        },
+        {
+            "id": "study-techniques-memory-competition-winners",
+            "title": "Study Techniques from Memory Competition Winners",
+            "slug": "study-techniques-memory-competition-winners",
+            "category": "study-tips",
+            "tags": ["study-techniques", "memory-competition", "learning-strategies", "academic-success"],
+            "date": "2024-11-05",
+            "author": "Memory Champion Team",
+            "excerpt": "Learn the study techniques used by memory competition champions. Discover their secrets for memorizing vast amounts of information and how to apply these methods to academic success.",
+            "image": "/blog/assets/images/memory-competition.jpg",
+            "readingTime": "7 min read",
+            "views": 1345,
+            "featured": false,
+            "contentFile": "/blog/posts/2024/november/study-techniques-memory-competition-winners.html",
+            "meta": {
+                "description": "Study techniques and strategies used by memory competition winners for academic success.",
+                "keywords": "memory competition techniques, study strategies, learning methods, academic performance, memory champions"
+            }
+        },
+        {
+            "id": "cognitive-decline-prevention-strategies",
+            "title": "Cognitive Decline Prevention: 8 Evidence-Based Strategies That Work",
+            "slug": "cognitive-decline-prevention-strategies",
+            "category": "cognitive-science",
+            "tags": ["cognitive-decline", "prevention", "brain-health", "aging", "neuroscience"],
+            "date": "2024-11-03",
+            "author": "Neuroscience Team",
+            "excerpt": "Discover evidence-based strategies to maintain cognitive function and prevent age-related mental decline. Learn about nutrition, exercise, mental stimulation, and lifestyle factors that support brain health.",
+            "image": "/blog/assets/images/brain-health.jpg",
+            "readingTime": "13 min read",
+            "views": 1876,
+            "featured": false,
+            "contentFile": "/blog/posts/2024/november/cognitive-decline-prevention-strategies.html",
+            "meta": {
+                "description": "Evidence-based strategies for preventing cognitive decline and maintaining brain health as you age.",
+                "keywords": "cognitive decline prevention, brain health strategies, aging brain, neuroscience, mental fitness"
+            }
+        }
+    ],
+    "pagination": {
+        "currentPage": 1,
+        "totalPages": 1,
+        "totalArticles": 8,
+        "articlesPerPage": 10
+    }
+}

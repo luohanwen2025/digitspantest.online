@@ -1,0 +1,60 @@
+{
+    "categories": [
+        {
+            "id": "memory-techniques",
+            "name": "Memory Techniques",
+            "description": "Learn proven memory improvement methods and mnemonic techniques to enhance your cognitive abilities",
+            "color": "#667eea",
+            "icon": "🧠",
+            "articleCount": 3,
+            "lastUpdated": "2024-11-15",
+            "meta": {
+                "title": "Memory Techniques - Improve Your Memory Skills",
+                "description": "Discover science-backed memory techniques including memory palace, chunking, and mnemonic devices to boost your cognitive performance.",
+                "keywords": "memory techniques, mnemonics, memory palace, chunking, cognitive improvement"
+            }
+        },
+        {
+            "id": "cognitive-science",
+            "name": "Cognitive Science",
+            "description": "Explore the science behind memory, cognition, and brain function with research-based insights",
+            "color": "#764ba2",
+            "icon": "🔬",
+            "articleCount": 2,
+            "lastUpdated": "2024-11-18",
+            "meta": {
+                "title": "Cognitive Science Research and Insights",
+                "description": "Deep dive into cognitive science research, brain function studies, and the neuroscience of memory and learning.",
+                "keywords": "cognitive science, neuroscience, brain research, memory science, cognitive function"
+            }
+        },
+        {
+            "id": "brain-training",
+            "name": "Brain Training",
+            "description": "Discover effective brain training methods, apps, and exercises to improve cognitive performance",
+            "color": "#10b981",
+            "icon": "🎯",
+            "articleCount": 2,
+            "lastUpdated": "2024-11-12",
+            "meta": {
+                "title": "Brain Training - Effective Cognitive Exercises",
+                "description": "Explore brain training apps, cognitive exercises, and mental workouts that actually work to improve memory and focus.",
+                "keywords": "brain training, cognitive exercises, memory apps, brain games, mental fitness"
+            }
+        },
+        {
+            "id": "study-tips",
+            "name": "Study Tips",
+            "description": "Learn effective study strategies and learning techniques for academic success",
+            "color": "#f59e0b",
+            "icon": "📚",
+            "articleCount": 1,
+            "lastUpdated": "2024-11-05",
+            "meta": {
+                "title": "Study Tips and Learning Strategies",
+                "description": "Master effective study techniques, learning strategies, and academic success methods used by top students and memory experts.",
+                "keywords": "study tips, learning strategies, academic success, study techniques, memory for studying"
+            }
+        }
+    ]
+}
