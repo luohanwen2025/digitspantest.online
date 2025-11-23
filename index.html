@@ -118,6 +118,76 @@
             color: var(--primary-color);
         }
 
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            position: relative;
+            padding-right: 1.5rem;
+        }
+
+        .dropdown-toggle::after {
+            content: '▼';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-toggle::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow-lg);
+            padding: 0.5rem 0;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            list-style: none;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 0.25rem;
+            margin: 0 0.5rem;
+        }
+
+        .dropdown-menu a:hover {
+            color: var(--primary-color);
+            background: var(--bg-secondary);
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
         /* Hero Section */
         .hero {
             margin-top: 80px;
@@ -176,6 +246,90 @@
             gap: 1rem;
             flex-wrap: wrap;
             justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Quick Start Cards */
+        .quick-start-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .test-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .test-card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .test-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .test-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .test-card-features {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .test-card-cta {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .test-card-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         .btn {
@@ -637,6 +791,51 @@
                 display: flex;
             }
 
+            /* Mobile Dropdown Styles */
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                background: transparent;
+                margin-top: 0.5rem;
+                margin-left: 1rem;
+                border-left: 2px solid var(--primary-color);
+                padding-left: 1rem;
+            }
+
+            .dropdown-toggle::after {
+                display: none;
+            }
+
+            /* Mobile dropdown toggle */
+            .dropdown.active .dropdown-menu {
+                display: block;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .dropdown-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .dropdown-toggle::after {
+                display: block;
+                content: '▶';
+                position: static;
+                transform: none;
+                transition: transform 0.3s ease;
+            }
+
+            .dropdown.active .dropdown-toggle::after {
+                transform: rotate(90deg);
+            }
+
             .mobile-menu {
                 display: block;
             }
@@ -790,13 +989,24 @@
         <div class="nav-container">
             <div class="logo">🧠 DigitSpanTest.online</div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#what-is">What is Digit Span</a></li>
-             <li><a href="game.html">Tests</a></li>
-      <li><a href="working-memory.html">Working Memory</a></li>
-      <li><a href="memory-training.html">Training</a></li>
-      <li><a href="memory-techniques.html">Techniques</a></li>
-     <li><a href="contact.html">Contact Us</a></li>
-   </ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Start Testing</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="game.html">Standard Test</a></li>
+                        <li><a href="backward-game.html">Advanced Test</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Learn More</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="memory-techniques.html">Memory Techniques</a></li>
+                        <li><a href="working-memory.html">Working Memory</a></li>
+                        <li><a href="memory-training.html">Training Guide</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
             <button class="mobile-menu" id="mobileMenu">
                 <span></span>
                 <span></span>
@@ -815,19 +1025,34 @@
                     Used by researchers and psychologists worldwide.
                 </p>
                 <div class="hero-cta">
-                    <a href="#game" class="btn btn-primary">Start Test Now</a>
-                    <a href="#what-is" class="btn btn-secondary">Learn More</a>
+                    <a href="game.html" class="btn btn-primary">Start Standard Test</a>
+                    <a href="backward-game.html" class="btn btn-secondary">Try Advanced Test</a>
                 </div>
             </div>
 
-            <!-- Game Container -->
-            <div class="game-container" id="game">
-                <iframe
-                    src="https://digitspantest.online/game.html"
-                    class="game-iframe"
-                    title="Digit Span Memory Test Game"
-                    loading="lazy">
-                </iframe>
+            <!-- Quick Start Cards -->
+            <div class="quick-start-cards">
+                <div class="test-card">
+                    <div class="test-card-icon">🎯</div>
+                    <h3>Standard Test</h3>
+                    <p>Classic digit span test with 12 progressive levels</p>
+                    <div class="test-card-features">
+                        <span class="feature-tag">Beginner Friendly</span>
+                        <span class="feature-tag">5-10 mins</span>
+                    </div>
+                    <a href="game.html" class="test-card-cta">Start Now</a>
+                </div>
+
+                <div class="test-card">
+                    <div class="test-card-icon">🚀</div>
+                    <h3>Advanced Test</h3>
+                    <p>Reverse digit span for enhanced cognitive challenge</p>
+                    <div class="test-card-features">
+                        <span class="feature-tag">Advanced</span>
+                        <span class="feature-tag">Memory Training</span>
+                    </div>
+                    <a href="backward-game.html" class="test-card-cta">Challenge Yourself</a>
+                </div>
             </div>
         </div>
     </section>
@@ -1205,13 +1430,15 @@
     <footer>
         <div class="footer-content">
             <div class="footer-links">
-                <a href="#what-is">About</a>
-                <a href="#how-to-play">How to Play</a>
-                <a href="#science">Research</a>
-                <a href="#faq">FAQ</a>
+                <a href="index.html">Home</a>
+                <a href="game.html">Standard Test</a>
+                <a href="backward-game.html">Advanced Test</a>
+                <a href="memory-techniques.html">Memory Techniques</a>
+                <a href="working-memory.html">Working Memory</a>
+                <a href="memory-training.html">Training Guide</a>
+                <a href="contact.html">Contact</a>
                 <a href="privacy-policy.html">Privacy Policy</a>
                 <a href="terms-of-service.html">Terms</a>
-                <a href="contact.html">Contact</a>
             </div>
             <div class="footer-copyright">
                 <p>&copy; 2024 DigitSpanTest.online. Free cognitive assessment tools for everyone.</p>
@@ -1227,6 +1454,24 @@
 
         mobileMenu.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Prevent dropdown links from closing mobile menu immediately
+        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const dropdown = toggle.parentElement;
+                    dropdown.classList.toggle('active');
+                }
+            });
         });
 
         // Smooth scrolling for navigation links
