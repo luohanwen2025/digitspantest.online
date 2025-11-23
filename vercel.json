@@ -59,6 +59,10 @@
       "use": "@vercel/static"
     },
     {
+      "src": "ads.txt",
+      "use": "@vercel/static"
+    },
+    {
       "src": "css/**",
       "use": "@vercel/static"
     },
@@ -79,6 +83,10 @@
     {
       "src": "/game",
       "dest": "/game.html"
+    },
+    {
+      "src": "/ads.txt",
+      "dest": "/ads.txt"
     },
     {
       "src": "/(.*)",
